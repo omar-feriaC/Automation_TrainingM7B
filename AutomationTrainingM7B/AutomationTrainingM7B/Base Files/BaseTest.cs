@@ -18,14 +18,14 @@ namespace AutomationTrainingM7B.Base_Files
         protected static string strUrl = ConfigurationManager.AppSettings.Get("url");
 
         /*METHOD/FUNCTIONS*/
-        public void SetupDriver()
+        public static void SetupDriver()
         {
             objDriver = new ChromeDriver();
             objDriver.Url = strUrl;
             objDriver.Manage().Window.Maximize();
         }
 
-        public void ExitDriver()
+        public static void ExitDriver()
         {
             objDriver.Close();
             objDriver.Quit();

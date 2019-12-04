@@ -29,5 +29,47 @@ namespace AutomationTrainingM7B.Page_Objects
         private static IWebElement objPassword_Txt => _driver.FindElement(By.Name(strPassword_Txt));
         private static IWebElement objSignIn_Btn => _driver.FindElement(By.XPath(strSignIn_Btn));
 
+
+        /*METHODS FOR ACCESING TO WEBELEMENTS FROM THIS PARTICULAR POM CLASS*/
+        /*User Name*/
+        private static IWebElement GetUserNameTxt()
+        {
+            return objUserName_Txt;
+        }
+
+        public static void fnEnterUserNameTxt(string pstrUserName)
+        {
+            objUserName_Txt.Clear();
+            objUserName_Txt.SendKeys(pstrUserName);
+        }
+
+        /*Password*/
+        private static IWebElement GetPasswordTxt()
+        {
+            return objPassword_Txt;
+        }
+
+        public static void fnEnterPasswordTxt(string pstrPassword)
+        {
+            objPassword_Txt.Clear();
+            objPassword_Txt.SendKeys(pstrPassword);
+        }
+
+        /*Sign In*/
+        private static IWebElement GetSignInBtn()
+        {
+            return objSignIn_Btn;
+        }
+
+        public static void fnClickSignInBtn()
+        {
+            objSignIn_Btn.Click();
+        }
+
+        public void fnClickSignInBtn2()
+        {
+            objSignIn_Btn.Click();
+        }
+
     }
 }

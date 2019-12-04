@@ -1,4 +1,5 @@
 ﻿using AutomationTrainingM7B.Base_Files;
+using AutomationTrainingM7B.Page_Objects;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
@@ -14,9 +15,19 @@ namespace AutomationTrainingM7B
     {
         static void Main(string[] args)
         {
-            objDriver = new ChromeDriver();
+
+            SetupDriver();
+            
+            LoginPage_Mercury objLogin = new LoginPage_Mercury(objDriver);
+            LoginPage_Mercury.fnEnterUserNameTxt(strUserName);
+            LoginPage_Mercury.fnEnterPasswordTxt(strPassword);
+            LoginPage_Mercury.fnClickSignInBtn();
+
+            ExitDriver();
+
+            /*objDriver = new ChromeDriver();
             objDriver.Url = strUrl;
-            //Object Page
+            Object Page
             objDriver.FindElement(By.Id("userName")).Clear();
             objDriver.FindElement(By.Name("userName")).SendKeys(strUserName);
             objDriver.FindElement(By.Name("password")).Clear();
@@ -34,6 +45,7 @@ namespace AutomationTrainingM7B
             //Driver Kill
             objDriver.Close();
             objDriver.Quit();
+            */
 
             Console.ReadKey();
         }
