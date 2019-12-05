@@ -17,7 +17,7 @@ namespace AutomationTrainingM7B.Page_Objects
         readonly static string strUserName_Txt = "userName";
         readonly static string strPassword_Txt = "password";
         readonly static string strSignIn_Btn = "//input[@name='login']";
-        
+
         /*POM FILE CONSTRUCTOR BY TAKING AS PARAMETER "DRIVER" FROM BASETEST CLASS*/
         public LoginPage_Mercury(IWebDriver pobjDriver)
         {
@@ -65,11 +65,7 @@ namespace AutomationTrainingM7B.Page_Objects
         {
             objSignIn_Btn.Click();
         }
-
-        public void fnClickSignInBtn2()
-        {
-            objSignIn_Btn.Click();
-        }
+               
 
     }
 }

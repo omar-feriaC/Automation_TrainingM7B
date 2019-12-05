@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,7 @@ namespace AutomationTrainingM7B.Base_Files
         protected static string strUrl = ConfigurationManager.AppSettings.Get("url");
 
         /*METHOD/FUNCTIONS*/
+        [SetUp]
         public static void SetupDriver()
         {
             objDriver = new ChromeDriver();
@@ -25,6 +27,7 @@ namespace AutomationTrainingM7B.Base_Files
             objDriver.Manage().Window.Maximize();
         }
 
+        [TearDown]
         public static void ExitDriver()
         {
             objDriver.Close();

@@ -16,14 +16,14 @@ namespace AutomationTrainingM7B
         static void Main(string[] args)
         {
 
-            SetupDriver();
+            /*SetupDriver();
             
             LoginPage_Mercury objLogin = new LoginPage_Mercury(objDriver);
             LoginPage_Mercury.fnEnterUserNameTxt(strUserName);
             LoginPage_Mercury.fnEnterPasswordTxt(strPassword);
             LoginPage_Mercury.fnClickSignInBtn();
 
-            ExitDriver();
+            ExitDriver();*/
 
             /*objDriver = new ChromeDriver();
             objDriver.Url = strUrl;
