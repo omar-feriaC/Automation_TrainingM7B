@@ -56,6 +56,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base Files\BaseTest.cs" />
+    <Compile Include="Page Objects\Animals.cs" />
+    <Compile Include="Page Objects\CalculateSalary.cs" />
+    <Compile Include="Page Objects\Dog.cs" />
+    <Compile Include="Page Objects\InterfaceEmployee.cs" />
     <Compile Include="Page Objects\LoginPage_Mercury.cs" />
     <Compile Include="Page Objects\RegisterPage_Mercury.cs" />
     <Compile Include="Program.cs" />

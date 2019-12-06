@@ -15,6 +15,18 @@ namespace AutomationTrainingM7B
     {
         static void Main(string[] args)
         {
+            Animals objAnimal = new Animals("test1", "test2", "test3", "test4");
+            objAnimal.fnEating();
+            objAnimal.fnMovement();
+            objAnimal.fnSound();
+
+            Console.WriteLine("-------------------------");
+
+            Dog objDog = new Dog();
+            objDog.fnEating();
+            objDog.fnMovement();
+            objDog.fnSound();
+            objDog.fnPrintRaza();
 
             /*SetupDriver();
             
