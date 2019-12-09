@@ -8,5 +8,9 @@ namespace AutomationTrainingM7B.M7Exercise
 {
     interface IShape
     {
+        double area { get; set; }
+        double perimeter { get; set; }
+
+        public void DisplayInfo();
     }
 }
