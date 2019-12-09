@@ -57,6 +57,8 @@
   <ItemGroup>
     <Compile Include="Base Files\BaseTest.cs" />
     <Compile Include="M7Exercise\IShape.cs" />
+    <Compile Include="Manuel_Ku_M7_Exercise\2D_Shape.cs" />
+    <Compile Include="Manuel_Ku_M7_Exercise\IShape.cs" />
     <Compile Include="Page Objects\LoginPage_Mercury.cs" />
     <Compile Include="Page Objects\RegisterPage_Mercury.cs" />
     <Compile Include="Program.cs" />
