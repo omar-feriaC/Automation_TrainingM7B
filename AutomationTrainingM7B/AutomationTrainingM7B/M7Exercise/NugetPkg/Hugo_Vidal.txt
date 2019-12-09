@@ -1,0 +1,4 @@
+  
+Shape1: Rectangle
+Shape2: Pyramid
+NuGet : AutoMapper
