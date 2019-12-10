@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutomationTrainingM7B.M7Exercise
 {
-    class Pentagon : _2D_Shape
+    class Pentagon : IShape, _3D_Shape
     {
 
     }

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace AutomationTrainingM7B.M7Exercise
 {
-    class Pentaedrom : _3D_Shape
+    class Pentaedrom : IShape,_3D_Shape
     {
-        
+       
     }
 }
