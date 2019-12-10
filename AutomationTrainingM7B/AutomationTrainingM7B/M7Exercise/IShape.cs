@@ -9,13 +9,11 @@ namespace AutomationTrainingM7B.M7Exercise
     interface IShape
     {
         /*ATTRIBUTES*/
-        public static double dbleArea;
-        public static double dblePerimeter;
+        double dbleArea { get; set; }
+        double dblePerimeter { get; set; }
+        double dbleBase { get; set; }
+        double dbleHigh { get; set; }
 
-        public void DisplayInfo()
-        {
-            Console.WriteLine(DblArea);
-            Console.WriteLine(DblPerimeter);
-        }
+        void DisplayInfo();
     }
 }
