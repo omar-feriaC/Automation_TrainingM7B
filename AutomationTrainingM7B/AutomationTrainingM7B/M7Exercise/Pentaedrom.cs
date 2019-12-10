@@ -8,5 +8,6 @@ namespace AutomationTrainingM7B.M7Exercise
 {
     class Pentaedrom : _3D_Shape
     {
+        
     }
 }

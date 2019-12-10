@@ -8,5 +8,6 @@ namespace AutomationTrainingM7B.M7Exercise
 {
     class Pentagon : _2D_Shape
     {
+
     }
 }
