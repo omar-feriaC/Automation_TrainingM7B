@@ -10,13 +10,6 @@ namespace AutomationTrainingM7B.M7Exercise.Alexis_Tun_M7_Exercise
     {
         protected double dblVolume;
 
-        public double area { get; set; }
-        public double perimeter { get ; set; }
-        public string name { get; set; }
-        public string volume { get; set; }
-
-
-
         public Shape_3D()
         {
             strName = "Square";
