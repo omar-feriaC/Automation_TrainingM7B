@@ -10,7 +10,8 @@ namespace AutomationTrainingM7B.M7Exercise
     {
         double area { get; set; }
         double perimeter { get; set; }
+        string name { get; set; }
 
-        public void DisplayInfo();
+        void DisplayInfo();
     }
 }

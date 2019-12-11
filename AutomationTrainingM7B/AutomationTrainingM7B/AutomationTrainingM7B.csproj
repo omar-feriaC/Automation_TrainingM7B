@@ -56,7 +56,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base Files\BaseTest.cs" />
-    <Compile Include="M7Exercise\Alexis_Tun_M7_Exercise\2D_Shape.cs" />
+    <Compile Include="M7Exercise\Alexis_Tun_M7_Exercise\Prism.cs" />
+    <Compile Include="M7Exercise\Alexis_Tun_M7_Exercise\Shape_2D.cs" />
+    <Compile Include="M7Exercise\Alexis_Tun_M7_Exercise\Shape_3D.cs" />
+    <Compile Include="M7Exercise\Alexis_Tun_M7_Exercise\Square.cs" />
     <Compile Include="M7Exercise\IShape.cs" />
     <Compile Include="Page Objects\LoginPage_Mercury.cs" />
     <Compile Include="Page Objects\RegisterPage_Mercury.cs" />
