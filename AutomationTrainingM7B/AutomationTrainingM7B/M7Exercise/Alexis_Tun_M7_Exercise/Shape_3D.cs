@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace AutomationTrainingM7B.M7Exercise.Alexis_Tun_M7_Exercise
 {
-    class Shape_3D : IShape
+    class Shape_3D : Shape_2D
     {
         protected double dblVolume;
-        protected string strName;
-        protected double dblArea;
-        protected double dblPerimeter;
 
         public double area { get; set; }
         public double perimeter { get ; set; }

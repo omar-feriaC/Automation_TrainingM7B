@@ -33,8 +33,8 @@ namespace AutomationTrainingM7B
 
 
             //Square class 3D
-            Console.WriteLine("\n\n Calculate the Volume of a prism with same Size of previous 2D shape");
-            Console.WriteLine("\n Please insert a numeric value for the High of the prism: ");
+            Console.WriteLine("\n Calculate the Volume of a prism with same Size of previous 2D shape");
+            Console.WriteLine("Please insert a numeric value for the Heigh of the prism: ");
             pHigh = Convert.ToDouble(Console.ReadLine());
             Prism objPrism = new Prism(pHigh,pSide);
             objPrism.DisplayInfo();
