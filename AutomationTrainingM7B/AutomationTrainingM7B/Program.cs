@@ -25,20 +25,18 @@ namespace AutomationTrainingM7B
             _3D_Shape obj3D = new _3D_Shape();
             obj3D.DisplayInfo();
 
+            //Class object for Triangle
             Console.WriteLine("\r\n");
             Console.WriteLine("Exercice #2 \r\n");
             var objT = new Triangle(4, 4);
             Console.WriteLine("Triangle Area : {0} ", objT.GetArea());
             Console.WriteLine("Triangle Perimeter : {0} ", objT.GetPerimeter());
-            Console.WriteLine("Triangle Volumem : {0} ", objT.GetVolume(0));
 
+            //Class object for Cube
             var objC = new Cube(4);
             Console.WriteLine("Cube Area : {0} cm2", objC.GetCubeAreaTotal());
             Console.WriteLine("Cube Perimeter : {0} cm", objC.GetCubePerimeter());
             Console.WriteLine("Cube Volumem : {0} cm3", objC.GetCubeVolume());
-
-
-
 
 
             Console.ReadKey();

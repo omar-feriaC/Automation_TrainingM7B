@@ -12,15 +12,13 @@ namespace AutomationTrainingM7B.Manuel_Ku_M7_Exercise
     {
         public double Area { get; set; }
         public double Perimeter { get; set; }
-
         public string Name;
 
         public _2D_Shape()//Class contructor inicialized attributes
         {
             Area = 0;
             Perimeter = 0;
-            Name = "Triangle";
-           
+            Name = "Triangle";           
         }
         public void DisplayInfo()
         {

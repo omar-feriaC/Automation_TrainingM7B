@@ -34,12 +34,6 @@ namespace AutomationTrainingM7B.Manuel_Ku_M7_Exercise
             double Perimeter;
             return Perimeter = Base + Base + Base;
         }
-        public double GetVolume(double V)//Equilateral triangle Volume 0, no volume for this
-        {
-            double Volume;
-            Volume = V;
-            return Volume;
-        }
 
 
     }
