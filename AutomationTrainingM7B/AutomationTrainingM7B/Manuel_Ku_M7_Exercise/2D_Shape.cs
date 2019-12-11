@@ -15,17 +15,16 @@ namespace AutomationTrainingM7B.Manuel_Ku_M7_Exercise
 
         public string Name;
 
-        public _2D_Shape()
+        public _2D_Shape()//Class contructor inicialized attributes
         {
             Area = 0;
             Perimeter = 0;
             Name = "Triangle";
            
         }
-
         public void DisplayInfo()
         {
-            Console.WriteLine("Derived class 2D_Shape",Name);
+            Console.WriteLine("From class 2D_Shape",Name);
         }
     }
 
