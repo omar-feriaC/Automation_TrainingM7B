@@ -22,6 +22,13 @@ namespace AutomationTrainingM7B
             pentagon.CalcVolume();
             pentagon.DisplayInfo();
             pentagon.displayInfo3();
+            Console.WriteLine("=============");
+            Pentaedrom pentaedrom = new Pentaedrom();
+            pentaedrom.calcArea();
+            pentaedrom.calcVolume();
+            pentaedrom.DisplayInfo();
+            pentaedrom.displayInfo3();
+
             Console.ReadKey();
         }
     }

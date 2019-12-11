@@ -72,6 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base Files\BaseTest.cs" />
+    <Compile Include="M7Exercise\Pentaedrom.cs" />
     <Compile Include="M7Exercise\Pentagon.cs" />
     <Compile Include="M7Exercise\Shape2D.cs" />
     <Compile Include="M7Exercise\Shape3D.cs" />
