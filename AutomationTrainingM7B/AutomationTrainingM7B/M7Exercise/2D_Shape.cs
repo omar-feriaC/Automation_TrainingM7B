@@ -8,11 +8,13 @@ namespace AutomationTrainingM7B.M7Exercise
 {
     class _2D_Shape : IShape
     {
-        public string strName { get; set; }
-        public double dbleArea { get; set; }
-        public double dblePerimeter { get; set; }
-        public double dbleBase { get; set; }
-        public double dbleHigh { get; set; }
+        string IShape.strName { get; set; }
+        double IShape.dbleArea { get; set; }
+        double IShape.dblePerimeter { get; set; }
+
+        protected string strName;
+        protected double dbleArea;
+        protected double dblePerimeter;
 
         public _2D_Shape()
         {

@@ -11,8 +11,7 @@ namespace AutomationTrainingM7B.M7Exercise
         /*ATTRIBUTES*/
         double dbleArea { get; set; }
         double dblePerimeter { get; set; }
-        double dbleBase { get; set; }
-        double dbleHigh { get; set; }
+        string strName { get; set; }
 
         void DisplayInfo();
     }

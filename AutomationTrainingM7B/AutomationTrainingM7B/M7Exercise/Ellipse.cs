@@ -9,17 +9,42 @@ namespace AutomationTrainingM7B.M7Exercise
 {
     class Ellipse : _2D_Shape
     {
+        public double PI = 3.1416;
+        public double dbleRatio1;
+        public double dbleRatio2;
+        //public string strName;
 
-        public void _2D_Shape()
+        public Ellipse()
         {
-            dbleBase = 4;
-            dbleHigh = 5;
-            dbleArea = dbleBase * dbleHigh;
+            dbleArea = 0;
+            dblePerimeter = 0;
+            strName = "Ellipse";
+            dbleRatio1 = 0;
+            dbleRatio2 = 0;
+        }
+
+        public Ellipse(double pdbleRatio1, double pdbleRatio2)
+        {
+            strName = "Ellipse";
+            dbleRatio1 = pdbleRatio1;
+            dbleRatio2 = pdbleRatio2;
+        }
+
+        public double areaEllipse()
+        {
+
+            return dbleArea = dbleRatio1 * dbleRatio2 * PI;
+
+        }
+
+        public void areaEllipse(double pdbleRatio1, double pdbleRatio)
+        {
+            dbleArea = dbleRatio1 * dbleRatio2 * PI;
         }
 
         public void DisplayInfo()
         {
-            Console.WriteLine("The area from the Ellipse is"+ dbleArea);
+            Console.WriteLine("The area from the " + strName + " is " + dbleArea);
         }
 
     }

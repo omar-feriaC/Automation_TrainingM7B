@@ -69,6 +69,7 @@
     <Compile Include="M7Exercise\3D_Shape.cs" />
     <Compile Include="M7Exercise\Ellipse.cs" />
     <Compile Include="M7Exercise\IShape.cs" />
+    <Compile Include="M7Exercise\Sphere.cs" />
     <Compile Include="Page Objects\LoginPage_Mercury.cs" />
     <Compile Include="Page Objects\RegisterPage_Mercury.cs" />
     <Compile Include="Program.cs" />
