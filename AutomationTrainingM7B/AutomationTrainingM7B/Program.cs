@@ -1,4 +1,5 @@
 ﻿using AutomationTrainingM7B.Base_Files;
+using AutomationTrainingM7B.M7Exercise;
 using AutomationTrainingM7B.Page_Objects;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -15,6 +16,12 @@ namespace AutomationTrainingM7B
     {
         static void Main(string[] args)
         {
+            Pentagon pentagon = new Pentagon();
+            pentagon.CalcArea();
+            pentagon.CalcPerimeter();
+            pentagon.CalcVolume();
+            pentagon.DisplayInfo();
+            pentagon.displayInfo3();
             Console.ReadKey();
         }
     }

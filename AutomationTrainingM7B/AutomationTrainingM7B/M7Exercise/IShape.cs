@@ -8,10 +8,10 @@ namespace AutomationTrainingM7B.M7Exercise
 {
     interface IShape 
     {
-        //ATTRIBUTES
-         double dbleArea { get; set; }
-         double dblPerimeter { get; set; }
+     //ATTRIBUTE
+     string StrName { get; set; }
 
-    void DisplayInfo();
+     //METHOD TO DISPLAY THE INFORMATION   
+     void DisplayInfo();
     }
 }

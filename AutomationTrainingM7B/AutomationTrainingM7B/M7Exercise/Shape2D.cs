@@ -6,26 +6,27 @@ using System.Threading.Tasks;
 
 namespace AutomationTrainingM7B.M7Exercise
 {
-    class _2D_Shape:IShape
+    class Shape2D:IShape
 
     {
-        public double dbleArea { get; set; }
-        public double dblPerimeter { get; set; }
-
+        public double dbleArea;
+        public double dblePerimeter;
+        public string StrName { get; set; }
         
 
         //METHOD FOR DISPLAYING INFORMATION
         public void DisplayInfo()
         {
-            Console.WriteLine("This is the area {0} and this is the perimeter {1}", dbleArea, dblPerimeter);
+            Console.WriteLine("The figure is: {0}", StrName);
+            Console.WriteLine("This is the area {0} and this is the perimeter {1}", dbleArea, dblePerimeter);
         }
 
         //INITIALIZE ATTRIBUTES
-        public _2D_Shape()
+        public Shape2D()
         {
             string strName = "";
             double dbleArea = 0;
-            double dblPerimeter = 0;
+            double dblePerimeter = 0;
         }
 
     }
