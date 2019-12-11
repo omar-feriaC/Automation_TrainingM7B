@@ -12,7 +12,7 @@ namespace AutomationTrainingM7B.M7Exercise.Alexis_Tun_M7_Exercise
 
         public Shape_3D()
         {
-            strName = "Square";
+            strName = "Quadrangular Prism";
             dblArea = 0;
             dblPerimeter = 0;
             dblVolume = 0;

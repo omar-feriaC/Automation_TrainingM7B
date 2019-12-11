@@ -18,12 +18,14 @@ namespace AutomationTrainingM7B.M7Exercise.Alexis_Tun_M7_Exercise
             dblArea = 0;
             dblHigh = 0;
             dblVolume = 0;
+            strName = "Quadrangular Prism";
         }
 
         public Prism(double pdblHigh,double pdblSide)
         {
             dblHigh = pdblHigh;
             dblSide = pdblSide;
+            strName = "Quadrangular Prism";
         }
 
         public double CalculateArea()
@@ -39,7 +41,7 @@ namespace AutomationTrainingM7B.M7Exercise.Alexis_Tun_M7_Exercise
 
         public void DisplayInfo()
         {
-            Console.WriteLine($"\n\n Given the following shape: {strName}");
+            Console.WriteLine($"\n Given the following shape: {strName}");
             Console.WriteLine("Volume is = {0}", CalculateVolume());
         }
     }
