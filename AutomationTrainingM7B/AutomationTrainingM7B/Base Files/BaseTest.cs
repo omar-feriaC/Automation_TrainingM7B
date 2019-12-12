@@ -14,9 +14,12 @@ namespace AutomationTrainingM7B.Base_Files
     {
         /*ATTRIBUTES*/
         public static IWebDriver objDriver;
-        protected static string strUserName = ConfigurationManager.AppSettings.Get("username");
-        protected static string strPassword = ConfigurationManager.AppSettings.Get("password");
-        protected static string strUrl = ConfigurationManager.AppSettings.Get("url");
+        //protected static string strUserName = ConfigurationManager.AppSettings.Get("username");
+        //protected static string strPassword = ConfigurationManager.AppSettings.Get("password");
+        //protected static string strUrl = ConfigurationManager.AppSettings.Get("url");//Get the url from the AppConfig
+        protected static string strUrl = Environment.GetEnvironmentVariable("url", EnvironmentVariableTarget.User);//Get the url from the environment variable
+        protected static string strUserName = Environment.GetEnvironmentVariable("userName", EnvironmentVariableTarget.User);
+        protected static string strPassword = Environment.GetEnvironmentVariable("password", EnvironmentVariableTarget.User);
 
         /*METHOD/FUNCTIONS*/
         [SetUp]
