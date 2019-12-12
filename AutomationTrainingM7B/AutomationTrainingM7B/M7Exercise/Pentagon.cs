@@ -21,6 +21,14 @@ namespace AutomationTrainingM7B.M7Exercise
             dbleHeight = 3;
             StrName = "Pentagon";
         }
+        //OVERLOADING THE FUNCTION
+        public Pentagon(string strPName, double dblePSide, double dblePApotema, double dblePHeight)
+        {
+            StrName = strPName;
+            dbleSide = dblePSide;
+            dbleApotema = dblePApotema;
+            dbleHeight = dblePHeight;
+        }
 
         //PERIMETER
         public double CalcPerimeter()
@@ -28,6 +36,13 @@ namespace AutomationTrainingM7B.M7Exercise
             dblePerimeter = 5 * dbleSide;
             return dblePerimeter;
         }
+        //OVERLOADING THE FUNCTION
+        public double CalcPerimeter(double dbleSide2)
+        {
+            dblePerimeter = 5 * dbleSide2;
+            return dblePerimeter;
+        }
+
 
         //AREA
         public double CalcArea()
@@ -35,11 +50,23 @@ namespace AutomationTrainingM7B.M7Exercise
             dbleArea = ((5 * dbleSide) * dbleApotema);
             return dbleArea;
         }
+        //OVERLOADING THE FUNCTION
+        public double CalcArea(double dbleSide3, double dbleApotema3)
+        {
+            dbleArea = ((5 * dbleSide3) * dbleApotema3);
+            return dbleArea;
+        }
 
         //VOLUME
         public double CalcVolume()
         {
             dbleVolume = (((5 * dbleSide) * dbleApotema) * dbleHeight);
+            return dbleVolume;
+        }
+        //OVERLOADING THE FUNCTION
+        public double CalcVolume(double dbleSide4, double dbleApotema2, double dbleHeight2)
+        {
+            dbleVolume = (((5 * dbleSide4) * dbleApotema2) * dbleHeight2);
             return dbleVolume;
         }
     }

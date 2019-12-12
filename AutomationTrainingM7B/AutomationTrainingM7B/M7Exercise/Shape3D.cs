@@ -15,7 +15,7 @@ namespace AutomationTrainingM7B.M7Exercise
         public void displayInfo3()
         {
             Console.WriteLine("The figure is: {0}", StrName);
-            Console.WriteLine("This is the volume: {0}", dbleVolume);
+            Console.WriteLine("The volume of the {0} is {1}", StrName,dbleVolume);
         }
 
         //INITIALIZE ATTRIBUTES

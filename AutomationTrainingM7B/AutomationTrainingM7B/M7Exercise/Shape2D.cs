@@ -18,7 +18,7 @@ namespace AutomationTrainingM7B.M7Exercise
         public void DisplayInfo()
         {
             Console.WriteLine("The figure is: {0}", StrName);
-            Console.WriteLine("This is the area {0} and this is the perimeter {1}", dbleArea, dblePerimeter);
+            Console.WriteLine("The area of the {0} is {1} and the perimeter is {2}", StrName,dbleArea, dblePerimeter);
         }
 
         //INITIALIZE ATTRIBUTES
