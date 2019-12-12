@@ -8,5 +8,6 @@ namespace AutomationTrainingM7B.M7Exercise
 {
     interface IShape
     {
+        void DisplayInfo(string strName);
     }
 }
