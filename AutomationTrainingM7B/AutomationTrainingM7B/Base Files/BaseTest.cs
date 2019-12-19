@@ -13,28 +13,25 @@ namespace AutomationTrainingM7B.Base_Files
     class BaseTest
     {
         /*ATTRIBUTES*/
-        public static IWebDriver objDriver;
-        protected static string strUserName = ConfigurationManager.AppSettings.Get("username");
-        protected static string strPassword = ConfigurationManager.AppSettings.Get("password");
-        protected static string strUrl = ConfigurationManager.AppSettings.Get("url");
+        public IWebDriver driver;
+        public string strUsername = ConfigurationManager.AppSettings.Get("username");
+        public string strPassword = ConfigurationManager.AppSettings.Get("password");
+        public string strUrl = ConfigurationManager.AppSettings.Get("url");
 
         /*METHOD/FUNCTIONS*/
         [SetUp]
-        public static void SetupDriver()
+        public void SetupDriver()
         {
-            objDriver = new ChromeDriver();
-            objDriver.Url = strUrl;
-            objDriver.Manage().Window.Maximize();
+            driver = new ChromeDriver();
+            driver.Url = strUrl;
+            driver.Manage().Window.Maximize();
         }
 
         [TearDown]
-        public static void ExitDriver()
+        public void ExitDriver()
         {
-            objDriver.Close();
-            objDriver.Quit();
+            driver.Close();
+            driver.Quit();
         }
-
-
-
     }
 }
