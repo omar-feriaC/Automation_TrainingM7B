@@ -20,6 +20,7 @@ namespace AutomationTrainingM7B.Base_Files
 
         /*METHOD/FUNCTIONS*/
         [SetUp]
+
         public static void SetupDriver()
         {
             objDriver = new ChromeDriver();
@@ -30,8 +31,8 @@ namespace AutomationTrainingM7B.Base_Files
         [TearDown]
         public static void ExitDriver()
         {
-            objDriver.Close();
-            objDriver.Quit();
+            //objDriver.Close();
+            //objDriver.Quit();
         }
 
 
