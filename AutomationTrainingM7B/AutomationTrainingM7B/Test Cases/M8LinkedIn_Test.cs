@@ -27,7 +27,7 @@ namespace AutomationTrainingM7B.Test_Cases
             {
                 _objDriverWait = new WebDriverWait(objDriver, new TimeSpan(0, 0, 30));
 
-                objDriver.Manage().Window.Maximize();
+                objDriver.Manage().Window.Maximize(); 
                 objLoginPage = new M8LinkedIn_Page(objDriver);
                 objLoginPage.fnUsernameText(strUserName);
                 objLoginPage.fnPasswordText(strPassword);
