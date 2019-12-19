@@ -9,5 +9,6 @@ namespace AutomationTrainingM7B.Page_Objects
 {
     class M8LinkedIn_Page : BaseTest
     {
+        //
     }
 }
