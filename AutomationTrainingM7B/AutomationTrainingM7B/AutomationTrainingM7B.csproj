@@ -56,16 +56,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base Files\BaseTest.cs" />
-    <Compile Include="Page Objects\Animals.cs" />
-    <Compile Include="Page Objects\CalculateSalary.cs" />
-    <Compile Include="Page Objects\Dog.cs" />
-    <Compile Include="Page Objects\InterfaceEmployee.cs" />
-    <Compile Include="Page Objects\LoginPage_Mercury.cs" />
-    <Compile Include="Page Objects\RegisterPage_Mercury.cs" />
+    <Compile Include="Page Objects\M8LinkedIn_Page.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Test Cases\LoginTest_Mercury.cs" />
-    <Compile Include="Test Cases\RegisterTest_Mercury.cs" />
+    <Compile Include="Test Cases\M8LinkedIn_Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

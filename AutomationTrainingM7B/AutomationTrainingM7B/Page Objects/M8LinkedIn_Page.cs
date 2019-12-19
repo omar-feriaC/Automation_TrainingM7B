@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutomationTrainingM7B.Base_Files;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace AutomationTrainingM7B.Page_Objects
 {
-    class RegisterPage_Mercury 
+    class M8LinkedIn_Page : BaseTest
     {
-
     }
 }

@@ -1,5 +1,4 @@
 ﻿using AutomationTrainingM7B.Base_Files;
-using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,12 +7,7 @@ using System.Threading.Tasks;
 
 namespace AutomationTrainingM7B.Test_Cases
 {
-    class RegisterTest_Mercury : BaseTest
+    class M8LinkedIn_Test : BaseTest
     {
-        [Test]
-        public void newRegisterTest()
-        {
-        }
-
     }
 }
