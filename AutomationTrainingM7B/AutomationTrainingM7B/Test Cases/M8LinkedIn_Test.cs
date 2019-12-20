@@ -10,12 +10,14 @@ using OpenQA.Selenium.Chrome;
 using NUnit.Framework;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
+using System.Threading;
 
 namespace AutomationTrainingM7B.Test_Cases
 {
     class M8LinkedIn_Test : BaseTest
     {
         M8LinkedIn_Page objLoginPage;
+        M8LinkedIn_SearchPage objSearch;
         WebDriverWait _objDriverWait;
 
 
@@ -36,6 +38,9 @@ namespace AutomationTrainingM7B.Test_Cases
                 
                 _objDriverWait.Until(ExpectedConditions.UrlContains("feed"));
                 Assert.AreEqual("https://www.linkedin.com/feed/", objDriver.Url);
+                Thread.Sleep(1000);
+                objSearch.fnSearchText("tester");
+                objSearch.fnSearchButton();
 
 
             }
