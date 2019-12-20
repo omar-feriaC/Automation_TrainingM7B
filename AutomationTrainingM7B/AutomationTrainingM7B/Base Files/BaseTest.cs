@@ -7,19 +7,46 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NUnit.Framework;
 
 namespace AutomationTrainingM7B.Base_Files
 {
     class BaseTest
     {
         /*ATTRIBUTES*/
-        public static IWebDriver objDriver;
-        protected static string strUserName = ConfigurationManager.AppSettings.Get("username");
-        protected static string strPassword = ConfigurationManager.AppSettings.Get("password");
-        protected static string strUrl = ConfigurationManager.AppSettings.Get("url");
+        public IWebDriver driver;
+        public string url;
+        public string username;
+        public string password;
 
-        /*METHOD/FUNCTIONS*/
+        [OneTimeSetUp]
+        public void BeforeAllTest()
+        {
+            username = ConfigurationManager.AppSettings.Get("username");
+            password = ConfigurationManager.AppSettings.Get("password");
+            url = ConfigurationManager.AppSettings.Get("url");
+        }
+
         [SetUp]
+        public void BeforeTest()
+        {
+            driver = new ChromeDriver();
+            driver.Url = url;
+        }
+
+        [TearDown]
+        public void AfterTest()
+        {
+            //driver.Close();
+        }
+
+        [OneTimeTearDown]
+        public void AfterAllTests()
+        {
+            //driver.Quit();
+        }
+        /*METHOD/FUNCTIONS*/
+        /*[SetUp]
         public static void SetupDriver()
         {
             objDriver = new ChromeDriver();
@@ -33,7 +60,7 @@ namespace AutomationTrainingM7B.Base_Files
             objDriver.Close();
             objDriver.Quit();
         }
-
+        */
 
 
     }

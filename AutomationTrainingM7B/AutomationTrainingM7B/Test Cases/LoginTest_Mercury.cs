@@ -12,7 +12,7 @@ namespace AutomationTrainingM7B.Test_Cases
 {
     class LoginTest_Mercury : BaseTest
     {
-        LoginPage_Mercury objLoginPage;
+        /*LoginPage_Mercury objLoginPage;
 
         [Test]
         public void MercuryLoginTest()
@@ -30,7 +30,7 @@ namespace AutomationTrainingM7B.Test_Cases
             LoginPage_Mercury.fnEnterUserNameTxt(strUserName);
             LoginPage_Mercury.fnEnterPasswordTxt(strPassword);
             LoginPage_Mercury.fnClickSignInBtn();
-        }
+        }*/
 
     }
 }
