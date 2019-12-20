@@ -30,8 +30,10 @@ namespace AutomationTrainingM7B.Base_Files
         [TearDown]
         public static void ExitDriver()
         {
-            objDriver.Close();
-            objDriver.Quit();
+            //***Exit of Browser commented in order to avoid close and see results***
+
+            //objDriver.Close();
+            //objDriver.Quit();
         }
 
 
