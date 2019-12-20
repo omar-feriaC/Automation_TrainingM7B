@@ -16,13 +16,13 @@ namespace AutomationTrainingM7B.Test_Cases
     class M8LinkedIn_Test : BaseTest
     {
         M8LinkedIn_Page objLoginPage;
-        WebDriverWait _objDriverwait;
-
+        WebDriverWait _objDriverWait;
+        --
         [Test]
 
-        public void M8LinkedIn_Login
+        public void M8LinkedIn_Login()
         {
-              try
+            try
             {
                 _objDriverWait = new WebDriverWait(objDriver, new TimeSpan(0, 0, 30));
 
@@ -51,6 +51,8 @@ namespace AutomationTrainingM7B.Test_Cases
 
 
             }
+        }
+    }
 }
         
     
