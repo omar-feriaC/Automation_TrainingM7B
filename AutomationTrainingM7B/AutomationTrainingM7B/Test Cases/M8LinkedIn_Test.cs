@@ -16,8 +16,7 @@ namespace AutomationTrainingM7B.Test_Cases
 {
     class M8LinkedIn_Test : BaseTest
     {
-        M8LinkedIn_Page objLoginPage;
-        M8LinkedIn_SearchPage objSearch;
+        M8LinkedIn_Page_POM objLoginPage;
         WebDriverWait _objDriverWait;
 
 
@@ -25,22 +24,20 @@ namespace AutomationTrainingM7B.Test_Cases
 
         public void M8LinkedIn_Login() {
 
+            
             try
             {
                 _objDriverWait = new WebDriverWait(objDriver, new TimeSpan(0, 0, 30));
 
                 objDriver.Manage().Window.Maximize(); 
-                objLoginPage = new M8LinkedIn_Page(objDriver);
+                objLoginPage = new M8LinkedIn_Page_POM(objDriver);
                 objLoginPage.fnUsernameText(strUserName);
                 objLoginPage.fnPasswordText(strPassword);
                 objLoginPage.fnLoginButton();
 
                 
                 _objDriverWait.Until(ExpectedConditions.UrlContains("feed"));
-                Assert.AreEqual("https://www.linkedin.com/feed/", objDriver.Url);
-                Thread.Sleep(1000);
-                objSearch.fnSearchText("tester");
-                objSearch.fnSearchButton();
+                Assert.AreEqual("https://www.linkedin.com/feed/", objDriver.Url);           
 
 
             }

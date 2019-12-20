@@ -10,12 +10,12 @@ using NUnit.Framework;
 
 namespace AutomationTrainingM7B.Page_Objects
 {
-    class M8LinkedIn_Page : BaseTest
+    class M8LinkedIn_Page_POM : BaseTest
     {
         /*DRIVER REFERENCE*/
         private static IWebDriver _objDriver;
 
-        public M8LinkedIn_Page(IWebDriver objDriver)
+        public M8LinkedIn_Page_POM(IWebDriver objDriver)
         {
 
             _objDriver = objDriver;
