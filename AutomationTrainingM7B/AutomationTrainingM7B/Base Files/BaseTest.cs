@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+
 namespace AutomationTrainingM7B.Base_Files
 {
     class BaseTest
@@ -19,6 +21,7 @@ namespace AutomationTrainingM7B.Base_Files
         protected static string strUrl = ConfigurationManager.AppSettings.Get("url");
 
         /*METHOD/FUNCTIONS*/
+
         [SetUp]
         public static void SetupDriver()
         {
