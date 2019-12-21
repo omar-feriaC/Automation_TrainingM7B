@@ -15,7 +15,7 @@ namespace AutomationTrainingM7B
     {
         static void Main(string[] args)
         {
-            Console.ReadKey();
+
         }
     }
 }

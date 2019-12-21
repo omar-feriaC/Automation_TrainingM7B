@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace AutomationTrainingM7B.Page_Objects
 {
-    class M8LinkedIn_Page : BaseTest
+    class M8LinkedIn_LoginPage : BaseTest
     {
         /*DRIVER REFERENCE*/
         private static IWebDriver _objDriver;
 
-        public M8LinkedIn_Page(IWebDriver objDriver)
+        public M8LinkedIn_LoginPage(IWebDriver objDriver)
         {
             _objDriver = objDriver;
         }
