@@ -17,6 +17,8 @@ namespace AutomationTrainingM7B.Base_Files
         protected static string strUserName = ConfigurationManager.AppSettings.Get("username");
         protected static string strPassword = ConfigurationManager.AppSettings.Get("password");
         protected static string strUrl = ConfigurationManager.AppSettings.Get("url");
+        protected static string strSearch = ConfigurationManager.AppSettings.Get("search");
+        protected static string strItaly = ConfigurationManager.AppSettings.Get("italy");
 
         /*METHOD/FUNCTIONS*/
         [SetUp]
