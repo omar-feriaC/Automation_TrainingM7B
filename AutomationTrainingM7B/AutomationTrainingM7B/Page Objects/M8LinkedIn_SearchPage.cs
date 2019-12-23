@@ -22,10 +22,11 @@ namespace AutomationTrainingM7B.Page_Objects
         private static readonly string STR_SEARCH_BUTTON = "search-global-typeahead__controls";
         private static readonly string STR_PEOPLE_BUTTON = "//button[span[text()='Gente' or text()='People']]";
         private static readonly string STR_ALLFILTER_BUTTON = "//button[span[text()='All Filters' or text()='Todos los filtros']]";
+        private static readonly string STR_APPLY_BUTTON = "//button[span[text()='Apply' or text()='Aplicar']]";
         private static readonly string STR_MEXICO_OPT = "//*[label[text()='Mexico' or text()='México']]";
         private static readonly string STR_ENGLISH_OPT = "//*[label[text()='Inglés' or text()='English']]";
         private static readonly string STR_SPANISH_OPT = "//*[label[text()='Español' or text()='Spanish']]";
-        private static readonly string STR_APPLY_BUTTON = "//button[span[text()='Apply' or text()='Aplicar']]";
+        
 
 
         //PAGE ELEMENT OBJECTS
