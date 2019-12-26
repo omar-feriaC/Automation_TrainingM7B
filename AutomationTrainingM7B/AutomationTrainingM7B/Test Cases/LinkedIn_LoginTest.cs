@@ -9,6 +9,7 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
+using System.Threading;
 
 
 namespace AutomationTrainingM7B.Test_Cases
@@ -69,14 +70,19 @@ namespace AutomationTrainingM7B.Test_Cases
                 _objDriverWait.Until(ExpectedConditions.UrlContains("feed"));
                 
                 Assert.AreEqual("https://www.linkedin.com/feed/", driver.Url);
-                objSearch.fnEnterDataInSearchTextField("4th Source\n");
+                objSearch.fnEnterDataInSearchTextField("4th Source");
                 _objDriverWait.Until(ExpectedConditions.UrlContains("results"));
                 objSearch.fnClickPeopleButton();
                 _objDriverWait.Until(ExpectedConditions.UrlContains("people"));
                 objSearch.fnClickAllFiltersButton();
                 _objDriverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//h2[@class='t-20 t-20--open t-black--light t-normal']")));
                 objSearch.fnSelectMexicoCheckBox();
-
+                objSearch.fnAddValueToLocationTextBox("Italy");
+                objSearch.fnSelectEnglishCheckBox();
+                objSearch.fnSelectSpanishCheckBox();
+                _objDriverWait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[@class='search-advanced-facets__button--apply ml4 mr2 artdeco-button artdeco-button--3 artdeco-button--primary ember-view']")));
+                objSearch.fnClickApplyAllFiltersButton();
+                objSearch.fnMultipleSearch();
             }
             catch (Exception ex)
             {
@@ -95,4 +101,3 @@ namespace AutomationTrainingM7B.Test_Cases
         }
     }
 }
-//*[@id="locations-facet-values"]/fieldset/ol/li[2]/label
