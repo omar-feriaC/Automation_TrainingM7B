@@ -19,7 +19,6 @@ namespace AutomationTrainingM7B.Test_Cases
         public static LinkedIn_SearchPage objSearch;
         public static WebDriverWait _objDriverWait;
 
-
         //Methods to use for test cases
         [Test]
         public void LinkedInLogin()
@@ -40,20 +39,31 @@ namespace AutomationTrainingM7B.Test_Cases
                 /******************************* - EXAM PART 2 - *************************************/
                 //Initiate the object to use methods -- Test Part2
                 objSearch = new LinkedIn_SearchPage(objDriver);
-                _objDriverWait = new WebDriverWait(objDriver, new TimeSpan(0, 0, 10));
+                _objDriverWait = new WebDriverWait(objDriver, new TimeSpan(0, 0, 15));
 
                 //Calling methods to execute on the test                
                 objSearch.fnInsertSearch(strSearch);
-                objSearch.fnPerformSearch();
+                //objSearch.fnPerformSearch();
+                objDriver.Url = strPeople;
 
-                _objDriverWait.Until(ExpectedConditions.ElementExists(By.XPath("//*[contains(@class,'search-filters-bar')]")));
+                _objDriverWait.Until(ExpectedConditions.ElementExists(By.XPath("//*[contains(@class,'search-vertical-filter')]")));
+                //_objDriverWait.Until(ExpectedConditions.ElementExists(By.XPath("//*[contains(@class,'search-vertical-filter__filter-item-button')")));
+                //objSearch.fnSelectPeopleBTN();
                 objSearch.fnClickFiltersButton();
 
                 _objDriverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[contains(@class,'search-basic-typeahead')]")));
-                objSearch.fnSelectMex();
+                //objSearch.fnSelectMex();
+                objSearch.fnInsertSearchLocation(strMex2);
+                objSearch.fnInsertSearchLocation(strMex1);
+                objSearch.fnInsertSearchLocation(strItaly);
                 //objSearch.fnSelectItaly(strItaly);
                 objSearch.fnApplyFilter();
-                
+
+                //****Search for each technology
+                //_objDriverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[contains(@class,'search-global-typeahead__button')]")));
+                objSearch.fnSearchByTechnologies();
+
+
             }
             catch (Exception ex)//To Detect if the test fails
             {

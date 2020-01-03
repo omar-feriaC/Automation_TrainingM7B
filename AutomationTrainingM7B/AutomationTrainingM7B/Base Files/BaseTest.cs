@@ -19,6 +19,9 @@ namespace AutomationTrainingM7B.Base_Files
         protected static string strUrl = ConfigurationManager.AppSettings.Get("url");
         protected static string strSearch = ConfigurationManager.AppSettings.Get("search");
         protected static string strItaly = ConfigurationManager.AppSettings.Get("italy");
+        protected static string strMex1 = ConfigurationManager.AppSettings.Get("mex1");
+        protected static string strMex2 = ConfigurationManager.AppSettings.Get("mex2");
+        protected static string strPeople = ConfigurationManager.AppSettings.Get("urlPeople");
 
         /*METHOD/FUNCTIONS*/
         [SetUp]
