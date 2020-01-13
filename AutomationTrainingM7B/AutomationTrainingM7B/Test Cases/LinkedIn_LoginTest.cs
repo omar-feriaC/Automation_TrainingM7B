@@ -10,6 +10,9 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using System.Threading;
+using AventStack.ExtentReports;
+using AventStack.ExtentReports.Reporter;
+
 
 
 namespace AutomationTrainingM7B.Test_Cases
@@ -19,6 +22,7 @@ namespace AutomationTrainingM7B.Test_Cases
         public static LinkedIn_LoginPOM objLogin;
         public static LinkedInSearchPagePOM objSearch;
         WebDriverWait _objDriverWait;
+        string strScreenshotPath;
 
         [Test]
         public void LinkedIn_Login()
@@ -26,6 +30,7 @@ namespace AutomationTrainingM7B.Test_Cases
             try
             {
                 _objDriverWait = new WebDriverWait(driver, new TimeSpan(0, 0, 10));
+                exTestStep = exTestCase.CreateNode("Login", "Login to LinkedIn");
                 objLogin = new LinkedIn_LoginPOM(driver);
 
                 driver.Manage().Window.Maximize();
@@ -33,15 +38,18 @@ namespace AutomationTrainingM7B.Test_Cases
                 objLogin.fnEnterPassword(password);
                 objLogin.fnClickLoginButton();
                 _objDriverWait.Until(ExpectedConditions.UrlContains("feed"));
-
-
                 Assert.AreEqual("https://www.linkedin.com/feed/", driver.Url);
+                exTestStep.Pass("User has logged successfully");
+
             }
             catch (Exception ex)
             {
+                manager.fnCaptureImage(driver);
+                exTestStep.Log(AventStack.ExtentReports.Status.Error, "Step has failed", MediaEntityBuilder.CreateScreenCaptureFromPath(strScreenshotPath).Build());
                 Console.WriteLine(ex.Message);
                 Console.WriteLine("Test Case Failed.");
-                Assert.Fail();
+                exTestStep.Fail($"Test Case failed with error: {ex.Message}");
+                //Assert.Fail();
             }
             //catch(AssertionException x)
             //{

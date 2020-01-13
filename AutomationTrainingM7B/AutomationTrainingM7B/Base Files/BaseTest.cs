@@ -8,6 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using AventStack.ExtentReports;
+using AventStack.ExtentReports.Reporter;
+using AutomationTrainingM7B.Reporting;
 
 namespace AutomationTrainingM7B.Base_Files
 {
@@ -19,12 +22,28 @@ namespace AutomationTrainingM7B.Base_Files
         public string username;
         public string password;
 
+        public ReportManager manager;
+        public ExtentV3HtmlReporter htmlReporter;
+        public ExtentReports extent;
+
+        public ExtentTest exTestSuite;
+        public ExtentTest exTestCase;
+        public ExtentTest exTestStep;
+
         [OneTimeSetUp]
         public void BeforeAllTest()
         {
             username = ConfigurationManager.AppSettings.Get("username");
             password = ConfigurationManager.AppSettings.Get("password");
             url = ConfigurationManager.AppSettings.Get("url");
+
+            manager = new ReportManager();
+            extent = new ExtentReports();
+            htmlReporter = new ExtentV3HtmlReporter(manager.fnGetReportPath());
+
+            manager.fnReportSetUp(htmlReporter, extent);
+
+            exTestSuite = exTestSuite.CreateNode(TestContext.CurrentContext.Test.Name);
         }
 
         [SetUp]
@@ -32,6 +51,8 @@ namespace AutomationTrainingM7B.Base_Files
         {
             driver = new ChromeDriver();
             driver.Url = url;
+
+            exTestCase = exTestSuite.CreateNode(TestContext.CurrentContext.Test.Name);
         }
 
         [TearDown]
