@@ -24,6 +24,8 @@ namespace AutomationTrainingM7B.Base_Files
         public static IWebDriver driver;
         /*URL for Webdriver*/
         private static string strBrowserName = ConfigurationManager.AppSettings.Get("url");
+        private static string strUserEmail = ConfigurationManager.AppSettings.Get("email");
+        private static string strUserPassword = ConfigurationManager.AppSettings.Get("password");
         /*Extent Reports Framework*/
         public static clsReportManager objRM = new clsReportManager();
         public static ExtentV3HtmlReporter objHtmlReporter; //Add information in HTML
@@ -76,7 +78,7 @@ namespace AutomationTrainingM7B.Base_Files
         //TearDown After each test case
         public static void AfterTest()
         {
-            objRM.fnTestCaseResult(objTest, objExtent, driver);
+            //objRM.fnTestCaseResult(objTest, objExtent, driver);
             driver.Close();
             driver.Quit();
         }
