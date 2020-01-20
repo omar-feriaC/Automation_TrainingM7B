@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace AutomationTrainingM7B.Page_Objects
 {
-    class clsPHPTravels_LoginPage
+    class clsPHPTravels_LoginPage : BaseTest
     {
         /*ATTRIBUTES*/
         public static WebDriverWait _driverWait;
@@ -34,11 +34,11 @@ namespace AutomationTrainingM7B.Page_Objects
         }
 
         /*OBJECT DEFINITION*/
-        private static IWebElement objEmailTxt = driver.FindElement(By.Name(STR_EMAIL_TXT));
-        private static IWebElement objPasswordTxt = driver.FindElement(By.Name(STR_PASSWORD_TXT));
-        private static IWebElement objRememberMeLnk = driver.FindElement(By.XPath(STRREMEMBERME_LNK));
-        private static IWebElement objForgotPassLnk = driver.FindElement(By.XPath(STR_FORGOTPASS_LNK));
-        private static IWebElement objLoginBtn = driver.FindElement(By.XPath(STR_LOGIN_BTN));
+        private static IWebElement objEmailTxt => _objDriver.FindElement(By.Name(STR_EMAIL_TXT));
+        private static IWebElement objPasswordTxt => _objDriver.FindElement(By.Name(STR_PASSWORD_TXT));
+        private static IWebElement objRememberMeLnk => _objDriver.FindElement(By.XPath(STRREMEMBERME_LNK));
+        private static IWebElement objForgotPassLnk => _objDriver.FindElement(By.XPath(STR_FORGOTPASS_LNK));
+        private static IWebElement objLoginBtn => _objDriver.FindElement(By.XPath(STR_LOGIN_BTN));
 
 
         /*METHODS/FUNCTIONS*/

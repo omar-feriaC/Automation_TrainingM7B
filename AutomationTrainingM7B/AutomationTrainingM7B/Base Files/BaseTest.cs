@@ -54,16 +54,9 @@ namespace AutomationTrainingM7B.Base_Files
             }
         }
 
-        //OneTimeTearDown after each class test
-        [OneTimeTearDown]
-        public static void fnAfterClass()
-        {
-            objExtent.Flush();
-        }
-
         [SetUp]
         //SetUp Before each test case
-        public static void SetUp()
+        public void SetUp()
         {
             driver = new ChromeDriver();
             driver.Url = strBrowserName;
@@ -72,9 +65,18 @@ namespace AutomationTrainingM7B.Base_Files
 
         }
 
+        //OneTimeTearDown after each class test
+        [OneTimeTearDown]
+        public static void fnAfterClass()
+        {
+            objExtent.Flush();
+        }
+
+       
+
         [TearDown]
         //TearDown After each test case
-        public static void AfterTest()
+        public void AfterTest()
         {
             objRM.fnTestCaseResult(objTest, objExtent, driver);
             driver.Close();
