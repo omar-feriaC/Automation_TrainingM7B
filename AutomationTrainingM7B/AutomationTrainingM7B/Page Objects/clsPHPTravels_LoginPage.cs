@@ -26,6 +26,8 @@ namespace AutomationTrainingM7B.Page_Objects
         readonly static string STR_LOGIN_BTN = "//span[text()='Login']";
         readonly static string STR_HAMBURGER_BTN = "sidebarCollapse";
 
+        //**Locators for **//
+
         /*CONSTRUCTOR*/
         public clsPHPTravels_LoginPage(IWebDriver pobjDriver)
         {

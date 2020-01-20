@@ -51,6 +51,7 @@ namespace AutomationTrainingM7B.Base_Files
             {
                 objExtent = new ExtentReports();
                 objRM.fnReportSetUp(objHtmlReporter, objExtent);
+                objTest = objExtent.CreateTest(TestContext.CurrentContext.Test.ClassName);
             }
         }
 
@@ -62,7 +63,7 @@ namespace AutomationTrainingM7B.Base_Files
             driver.Url = strBrowserName;
             driver.Manage().Window.Maximize();
             objclsDriver = new clsDriver(driver);
-
+            
         }
 
         //OneTimeTearDown after each class test
@@ -79,8 +80,8 @@ namespace AutomationTrainingM7B.Base_Files
         public void AfterTest()
         {
             objRM.fnTestCaseResult(objTest, objExtent, driver);
-            driver.Close();
-            driver.Quit();
+            //driver.Close();
+            //driver.Quit();
         }
 
         /*Clear and Send text to specific field*/
