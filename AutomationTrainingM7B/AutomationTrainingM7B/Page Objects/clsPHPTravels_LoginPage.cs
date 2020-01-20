@@ -26,7 +26,13 @@ namespace AutomationTrainingM7B.Page_Objects
         readonly static string STR_LOGIN_BTN = "//span[text()='Login']";
         readonly static string STR_HAMBURGER_BTN = "sidebarCollapse";
 
-        //**Locators for **//
+        //**Locators for Exam part 1.3**//
+        readonly static string STR_DASHBOARD_LST = "//*[@class='serverHeader__statsList']";
+        readonly static string STR_ADMINS_HREF = "//*[@href='https://www.phptravels.net/admin/accounts/admins/']";
+        readonly static string STR_SUPPLIERS_HREF = "//*[@href='https://www.phptravels.net/admin/accounts/suppliers/']";
+        readonly static string STR_CUSTOMERS_HREF = "//*[@href='https://www.phptravels.net/admin/accounts/customers/']";
+        readonly static string STR_GUESTS_HREF = "//*[@href='https://www.phptravels.net/admin/accounts/guest/']";
+        readonly static string STR_BOOKINGS_HREF = "//*[@href='https://www.phptravels.net/admin/bookings/']";
 
         /*CONSTRUCTOR*/
         public clsPHPTravels_LoginPage(IWebDriver pobjDriver)
@@ -41,6 +47,14 @@ namespace AutomationTrainingM7B.Page_Objects
         private static IWebElement objRememberMeLnk => _objDriver.FindElement(By.XPath(STRREMEMBERME_LNK));
         private static IWebElement objForgotPassLnk => _objDriver.FindElement(By.XPath(STR_FORGOTPASS_LNK));
         private static IWebElement objLoginBtn => _objDriver.FindElement(By.XPath(STR_LOGIN_BTN));
+
+        //*Object definition for Exam Part 1.3**//
+        private static IWebElement objDashboardLST => _objDriver.FindElement(By.ClassName(STR_DASHBOARD_LST));
+        private static IWebElement objAdminsTxt => _objDriver.FindElement(By.XPath(STR_ADMINS_HREF));
+        private static IWebElement objSupplierTxt => _objDriver.FindElement(By.XPath(STR_SUPPLIERS_HREF));
+        private static IWebElement objCustomerTxt => _objDriver.FindElement(By.XPath(STR_CUSTOMERS_HREF));
+        private static IWebElement objGuestTxt => _objDriver.FindElement(By.XPath(STR_GUESTS_HREF));
+        private static IWebElement objBookingTxt => _objDriver.FindElement(By.XPath(STR_BOOKINGS_HREF));
 
 
         /*METHODS/FUNCTIONS*/
