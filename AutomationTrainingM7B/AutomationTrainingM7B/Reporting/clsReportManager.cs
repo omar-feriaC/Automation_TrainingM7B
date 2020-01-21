@@ -43,7 +43,7 @@ namespace AutomationTrainingM7B.Reporting
             pExtent.AddSystemInfo("Version:", "v1.0");
         }
 
-        public string fnCaptureImage(IWebDriver pobjDriver, string pstrScreenName)
+        public string fnCaptureImage(IWebDriver pobjDriver, string pstrScreenName)        
         {
             /*Create SS directory*/
             ITakesScreenshot objITake = (ITakesScreenshot)pobjDriver;
@@ -56,6 +56,8 @@ namespace AutomationTrainingM7B.Reporting
             var strFullPath = strSSPath.Substring(0, strSSPath.LastIndexOf("bin")) + "ExtentReports\\Screenshots\\" + pstrScreenName;
             var strLocalPath = new Uri(strFullPath).LocalPath;
             objSS.SaveAsFile(strLocalPath, ScreenshotImageFormat.Png);
+
+            
             return strLocalPath;
         }
 

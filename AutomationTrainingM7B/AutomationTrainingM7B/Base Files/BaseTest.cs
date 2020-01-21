@@ -11,6 +11,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+
 namespace AutomationTrainingM7B.Base_Files
 {
     class BaseTest
@@ -18,6 +20,11 @@ namespace AutomationTrainingM7B.Base_Files
         //**************************************************
         //*                V A R I A B L E S
         //**************************************************
+
+       
+
+        public static ExtentTest exTestSuit;        
+        public static ExtentTest exTestCase;
 
         /*Webdriver Intance*/
         public static clsDriver objclsDriver;
@@ -33,8 +40,6 @@ namespace AutomationTrainingM7B.Base_Files
         public static ExtentTest objTest; // Test object for Extent Reports
         //public static ExtentHtmlReporter objHtmlReporter; //Old Version of HTML
 
-
-
         //**************************************************
         //                  M E T H O D S 
         //**************************************************
@@ -45,15 +50,18 @@ namespace AutomationTrainingM7B.Base_Files
             /*Init ExtentHtmlReporter object*/
             if (objHtmlReporter == null)
             {
-                objHtmlReporter = new ExtentV3HtmlReporter(objRM.fnReportPath());
-                //objHtmlReporter = new ExtentHtmlReporter(objRM.fnReportPath());
+                objHtmlReporter = new ExtentV3HtmlReporter(objRM.fnReportPath());                
+                               
+
             }
             /*Init ExtentReports object*/
             if (objExtent == null)
             {
                 objExtent = new ExtentReports();
-                objRM.fnReportSetUp(objHtmlReporter, objExtent);
+                
             }
+            objRM.fnReportSetUp(objHtmlReporter, objExtent);
+            exTestSuit = objExtent.CreateTest(TestContext.CurrentContext.Test.ClassName);
         }
 
         //OneTimeTearDown after each class test
@@ -72,6 +80,8 @@ namespace AutomationTrainingM7B.Base_Files
             driver.Manage().Window.Maximize();
             objclsDriver = new clsDriver(driver);
 
+            //objTest = exTestSuit.CreateNode(TestContext.CurrentContext.Test.Name);
+            exTestCase = exTestSuit.CreateNode(TestContext.CurrentContext.Test.Name);
         }
 
         [TearDown]
@@ -79,6 +89,7 @@ namespace AutomationTrainingM7B.Base_Files
         public static void AfterTest()
         {
             //objRM.fnTestCaseResult(objTest, objExtent, driver);
+
             driver.Close();
             driver.Quit();
         }

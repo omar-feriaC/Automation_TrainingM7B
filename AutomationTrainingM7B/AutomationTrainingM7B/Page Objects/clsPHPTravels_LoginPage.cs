@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace AutomationTrainingM7B.Page_Objects
 {
-    class clsPHPTravels_LoginPage
+    class clsPHPTravels_LoginPage : BaseTest
     {
         /*ATTRIBUTES*/
         public static WebDriverWait _driverWait;
@@ -143,11 +143,17 @@ namespace AutomationTrainingM7B.Page_Objects
             Console.WriteLine("****************Dashboard Element Valus In Red Box*****************");
             Console.WriteLine("");
             Console.WriteLine("");            
-            Console.WriteLine("Total Admins:    " + strTotalAdmins);
+            Console.WriteLine("Total Admins:    " + strTotalAdmins);            
             Console.WriteLine("Total Suppliers: " + strTotalupplier);
             Console.WriteLine("Total Customers: " + strTotalCustomers);
             Console.WriteLine("Total Guest:     " + strTotalGuest);
             Console.WriteLine("Total Bookings:  " + strTotalBookings);
+
+            objTest.Log(AventStack.ExtentReports.Status.Info, "Total Admin : " + strTotalAdmins);
+            objTest.Log(AventStack.ExtentReports.Status.Info, "Total Suppliers : " + strTotalupplier);
+            objTest.Log(AventStack.ExtentReports.Status.Info, "Total Customers : " + strTotalCustomers);
+            objTest.Log(AventStack.ExtentReports.Status.Info, "Total Guest : " + strTotalGuest);
+            objTest.Log(AventStack.ExtentReports.Status.Info, "Total Bookings : " + strTotalBookings);
         }
 
     }
