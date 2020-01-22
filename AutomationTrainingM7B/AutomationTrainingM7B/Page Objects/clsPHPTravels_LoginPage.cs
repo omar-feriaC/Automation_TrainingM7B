@@ -33,13 +33,19 @@ namespace AutomationTrainingM7B.Page_Objects
         readonly static string STR_TOTAL_CUSTOMERS_TXT = "(//i[@class='fa fa-users']/following-sibling::b)[1]";
         readonly static string STR_TOTAL_GUEST_TXT = "(//i[@class='fa fa-users']/following-sibling::b)[2]";
         readonly static string STR_TOTAL_BOOKINGS_TXT = "(//i[@class='fa fa-tag']/following-sibling::b)[1]";
+        /*SIDE BAR ELEMENTS*/
+        readonly static string STR_DASHBOARD_TXT = "(//ul[@id='social-sidebar-menu']/li[1]/a[1]";
+        readonly static string STR_UPDATES_TXT = "//span[text()='Updates']";
+        readonly static string STR_MODULES_TXT = "//a[@href='https://www.phptravels.net/admin/settings/modules/']";
+        readonly static string STR_GENERAL_TXT = "//a[@href='#menu-ui']";
 
+        readonly static string STR_TOTAL_TXT = "(//i[@class='fa fa-tag']/following-sibling::b)[1]";
 
         /*CONSTRUCTOR*/
         public clsPHPTravels_LoginPage(IWebDriver pobjDriver)
         {
             //driver = pobjDriver;
-            _objDriver = pobjDriver;
+            _objDriver = pobjDriver;  
             _driverWait = new WebDriverWait(_objDriver, new TimeSpan(0, 0, 40));
         }
 
@@ -49,12 +55,14 @@ namespace AutomationTrainingM7B.Page_Objects
         //private static IWebElement objRememberMeLnk = _objDriver.FindElement(By.XPath(STRREMEMBERME_LNK));
         //private static IWebElement objForgotPassLnk = _objDriver.FindElement(By.XPath(STR_FORGOTPASS_LNK));
         private static IWebElement objLoginBtn => _objDriver.FindElement(By.XPath(STR_LOGIN_BTN));
-
+        //Exercise Secction 1
         private static IWebElement objTotalAminsInt => _objDriver.FindElement(By.XPath(STR_TOTAL_ADMINS_TXT));
         private static IWebElement objTotalSuppliersInt => _objDriver.FindElement(By.XPath(STR_TOTAL_SUPPLIERS_TXT));
         private static IWebElement objTotalCustomersInt => _objDriver.FindElement(By.XPath(STR_TOTAL_CUSTOMERS_TXT));
         private static IWebElement objTotalGuestInt => _objDriver.FindElement(By.XPath(STR_TOTAL_GUEST_TXT));
         private static IWebElement objTotalBookingsInt => _objDriver.FindElement(By.XPath(STR_TOTAL_BOOKINGS_TXT));
+        //Exercise Secction 2
+
 
 
         /*METHODS/FUNCTIONS*/
@@ -141,7 +149,7 @@ namespace AutomationTrainingM7B.Page_Objects
             string strTotalBookings = objTotalBookingsInt.GetAttribute("innerHTML").ToString();
 
             Console.WriteLine("****************Dashboard Element Valus In Red Box*****************");
-            Console.WriteLine("");
+            Console.WriteLine(""); 
             Console.WriteLine("");            
             Console.WriteLine("Total Admins:    " + strTotalAdmins);            
             Console.WriteLine("Total Suppliers: " + strTotalupplier);
@@ -154,6 +162,10 @@ namespace AutomationTrainingM7B.Page_Objects
             objTest.Log(AventStack.ExtentReports.Status.Info, "Total Customers : " + strTotalCustomers);
             objTest.Log(AventStack.ExtentReports.Status.Info, "Total Guest : " + strTotalGuest);
             objTest.Log(AventStack.ExtentReports.Status.Info, "Total Bookings : " + strTotalBookings);
+        }
+        public void fnSideBarElements()
+        {
+
         }
 
     }
