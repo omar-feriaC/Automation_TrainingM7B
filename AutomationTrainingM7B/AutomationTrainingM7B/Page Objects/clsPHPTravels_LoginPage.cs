@@ -27,6 +27,7 @@ namespace AutomationTrainingM7B.Page_Objects
         readonly static string STR_FORGOTPASS_LNK = "//*[text()='Forget Password']";
         readonly static string STR_LOGIN_BTN = "//span[text()='Login']";
         readonly static string STR_HAMBURGER_BTN = "sidebarCollapse";
+        readonly static string STR_HOME_PAGE_DASHBOARD_TXT= "//p[text()='DASHBOARD']";
         /*DASHBOUARD ELEMENTS IN RED BOX*/
         readonly static string STR_TOTAL_ADMINS_TXT = "(//i[@class='fa fa-user']/following-sibling::b)[1]";
         readonly static string STR_TOTAL_SUPPLIERS_TXT = "(//i[@class='fa fa-user']/following-sibling::b)[2]";
@@ -34,10 +35,10 @@ namespace AutomationTrainingM7B.Page_Objects
         readonly static string STR_TOTAL_GUEST_TXT = "(//i[@class='fa fa-users']/following-sibling::b)[2]";
         readonly static string STR_TOTAL_BOOKINGS_TXT = "(//i[@class='fa fa-tag']/following-sibling::b)[1]";
         /*SIDE BAR ELEMENTS*/
-        readonly static string STR_DASHBOARD_TXT = "(//ul[@id='social-sidebar-menu']/li[1]/a[1]";
-        readonly static string STR_UPDATES_TXT = "//span[text()='Updates']";
-        readonly static string STR_MODULES_TXT = "//a[@href='https://www.phptravels.net/admin/settings/modules/']";
-        readonly static string STR_GENERAL_TXT = "//a[@href='#menu-ui']";
+        readonly static string STR_DASHBOARD_LB_BTN = "//ul[@id='social-sidebar-menu']/li[1]/a[1]";
+        readonly static string STR_UPDATES_LB_BTN = "//span[text()='Updates']";
+        readonly static string STR_MODULES_LB_BTN = "//a[@href='https://www.phptravels.net/admin/settings/modules/']";
+        readonly static string STR_GENERAL_DROPDPW_BTN = "//a[@href='#menu-ui']";
 
         readonly static string STR_TOTAL_TXT = "(//i[@class='fa fa-tag']/following-sibling::b)[1]";
 
@@ -62,7 +63,9 @@ namespace AutomationTrainingM7B.Page_Objects
         private static IWebElement objTotalGuestInt => _objDriver.FindElement(By.XPath(STR_TOTAL_GUEST_TXT));
         private static IWebElement objTotalBookingsInt => _objDriver.FindElement(By.XPath(STR_TOTAL_BOOKINGS_TXT));
         //Exercise Secction 2
-
+        private static IWebElement objDashboardLabelBtn => _objDriver.FindElement(By.XPath(STR_DASHBOARD_LB_BTN));
+        private static IWebElement objUpdatesBtn => _objDriver.FindElement(By.XPath(STR_UPDATES_LB_BTN));
+        private static IWebElement objModulesBtn => _objDriver.FindElement(By.XPath(STR_MODULES_LB_BTN));
 
 
         /*METHODS/FUNCTIONS*/
@@ -124,6 +127,22 @@ namespace AutomationTrainingM7B.Page_Objects
         {
             return objTotalBookingsInt;
         }
+        //SIDE BAR ELEMENTS
+        private IWebElement GetDashboardButton()
+        {
+            // return objRememberMeLnk;
+            return objDashboardLabelBtn;
+        }        
+        private IWebElement GetUpdatesButton()
+        {
+            // return objRememberMeLnk;
+            return objUpdatesBtn;
+        }
+        private IWebElement GetModulesButton()
+        {
+            // return objRememberMeLnk;
+            return objModulesBtn;
+        }
 
         public static void fnClickLoginButton()
         {
@@ -163,10 +182,45 @@ namespace AutomationTrainingM7B.Page_Objects
             objTest.Log(AventStack.ExtentReports.Status.Info, "Total Guest : " + strTotalGuest);
             objTest.Log(AventStack.ExtentReports.Status.Info, "Total Bookings : " + strTotalBookings);
         }
-        public void fnSideBarElements()
+        public static void fnDashboardElementButton()
+        {
+            _driverWait.Until(ExpectedConditions.ElementExists(By.XPath(STR_DASHBOARD_LB_BTN)));
+            _driverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath(STR_DASHBOARD_LB_BTN)));
+            _driverWait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(STR_DASHBOARD_LB_BTN)));
+            
+        }
+        public void fnClickUpdatesLbBtn()
+        {
+            
+            objUpdatesBtn.Click();
+            _driverWait.Until(ExpectedConditions.TitleContains("Updates"));//.ElementExists.(By.XPath()));
+        }
+        public static void fnClickModulesLbBtn()
         {
 
+            objModulesBtn.Click();
+            _driverWait.Until(ExpectedConditions.TitleContains("Modules"));//.ElementExists.(By.XPath()));
         }
+        public void fnSideBarElements()
+        {
+            fnDashboardElementButton();
+            objDashboardLabelBtn.Click();
+            fnDashboardElementButton();
+            //_driverWait.Until(ExpectedConditions.ElementExists(By.XPath(STR_DASHBOARD_LB_BTN)));
+            //_driverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath(STR_DASHBOARD_LB_BTN)));
+            //_driverWait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(STR_DASHBOARD_LB_BTN)));
+            fnClickUpdatesLbBtn();
+            _driverWait.Until(ExpectedConditions.ElementExists(By.XPath(STR_UPDATES_LB_BTN)));
+            _driverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath(STR_UPDATES_LB_BTN)));
+            _driverWait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(STR_UPDATES_LB_BTN)));
+            fnClickModulesLbBtn();
+            _driverWait.Until(ExpectedConditions.ElementExists(By.XPath(STR_MODULES_LB_BTN)));
+            _driverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath(STR_MODULES_LB_BTN)));
+            _driverWait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(STR_MODULES_LB_BTN)));
+            objDashboardLabelBtn.Click();
+
+        }
+
 
     }
 }

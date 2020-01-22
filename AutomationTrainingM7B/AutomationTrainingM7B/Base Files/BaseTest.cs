@@ -88,9 +88,9 @@ namespace AutomationTrainingM7B.Base_Files
         public static void AfterTest()
         {
             //objRM.fnTestCaseResult(objTest, objExtent, driver);
-
-            driver.Close();
-            driver.Quit();
+            
+            //driver.Close();
+            //driver.Quit();
         }
 
         /*Clear and Send text to specific field*/

@@ -18,7 +18,7 @@ namespace AutomationTrainingM7B.Test_Cases
         clsPHPTravels_LoginPage objPHP;
         string sreenPath;
 
-        [Test]
+        [Test, Order(1)]
         public void Test_M9Exercise()
         {
             try
@@ -49,5 +49,34 @@ namespace AutomationTrainingM7B.Test_Cases
             }
 
         }
+        [Test, Order(2)]
+        public void Test_DashboardBtnSideBar()
+        {
+            Test_M9Exercise();
+            objPHP.fnSideBarElements();
+            driver.Navigate().Back();
+            Assert.AreEqual(false, driver.Title.Contains("data:,"), "Page was not loaded correctly.");
+            driver.Navigate().Forward();
+        }
+        [Test, Order(3)]
+        public void Test_UpdateBtnSideBar()
+        {
+            Test_M9Exercise();
+            objPHP.fnSideBarElements();
+            Assert.AreEqual(false, driver.Title.Contains("https://www.phptravels.net/admin/updates/"), "Page was not loaded correctly.");
+            driver.Navigate().Back();          
+           
+        }
+        [Test, Order(4)]
+        public void Test_ModulesBtnSideBar()
+        {
+            Test_M9Exercise();
+            objPHP.fnSideBarElements();
+            //Assert.AreEqual(false, driver.Title.Contains("https://www.phptravels.net/admin/settings/modules/"), "Page was not loaded correctly.");
+            
+            //driver.Navigate().Back();
+
+        }
     }
+    
 }
