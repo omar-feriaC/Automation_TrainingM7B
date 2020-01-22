@@ -18,21 +18,15 @@ namespace AutomationTrainingM7B.Page_Objects
 
         /*LOCATORS DESCRIPTION*/
         readonly static string STR_EMAIL_TXT = "email";
-        readonly static string STR_EMAIL_TXT2 = "email";
         readonly static string STR_PASSWORD_TXT = "password";
         readonly static string STRREMEMBERME_LNK = "///label[@class='checkbox']";
-        readonly static string STRREMEMBERME_LNK2 = "//label[@class='checkbox']";
         readonly static string STR_FORGOTPASS_LNK = "//*[text()='Forget Password']";
         readonly static string STR_LOGIN_BTN = "//span[text()='Login']";
         readonly static string STR_HAMBURGER_BTN = "sidebarCollapse";
 
         //**Locators for Exam part 1.3**//
-        readonly static string STR_DASHBOARD_LST = "//*[@class='serverHeader__statsList']";
-        readonly static string STR_ADMINS_HREF = "//*[@href='https://www.phptravels.net/admin/accounts/admins/']";
-        readonly static string STR_SUPPLIERS_HREF = "//*[@href='https://www.phptravels.net/admin/accounts/suppliers/']";
-        readonly static string STR_CUSTOMERS_HREF = "//*[@href='https://www.phptravels.net/admin/accounts/customers/']";
-        readonly static string STR_GUESTS_HREF = "//*[@href='https://www.phptravels.net/admin/accounts/guest/']";
-        readonly static string STR_BOOKINGS_HREF = "//*[@href='https://www.phptravels.net/admin/bookings/']";
+        readonly static string STR_DASHBOARD_LST = "//*[@class='serverHeader__statsList']//a";
+
 
         /*CONSTRUCTOR*/
         public clsPHPTravels_LoginPage(IWebDriver pobjDriver)
@@ -49,13 +43,7 @@ namespace AutomationTrainingM7B.Page_Objects
         private static IWebElement objLoginBtn => _objDriver.FindElement(By.XPath(STR_LOGIN_BTN));
 
         //*Object definition for Exam Part 1.3**//
-        private static IWebElement objDashboardLST => _objDriver.FindElement(By.ClassName(STR_DASHBOARD_LST));
-        private static IWebElement objAdminsTxt => _objDriver.FindElement(By.XPath(STR_ADMINS_HREF));
-        private static IWebElement objSupplierTxt => _objDriver.FindElement(By.XPath(STR_SUPPLIERS_HREF));
-        private static IWebElement objCustomerTxt => _objDriver.FindElement(By.XPath(STR_CUSTOMERS_HREF));
-        private static IWebElement objGuestTxt => _objDriver.FindElement(By.XPath(STR_GUESTS_HREF));
-        private static IWebElement objBookingTxt => _objDriver.FindElement(By.XPath(STR_BOOKINGS_HREF));
-
+        private static IList<IWebElement> objDashboardLST => _objDriver.FindElements(By.XPath(STR_DASHBOARD_LST));
 
         /*METHODS/FUNCTIONS*/
 
@@ -107,6 +95,23 @@ namespace AutomationTrainingM7B.Page_Objects
             _driverWait.Until(ExpectedConditions.ElementExists(By.Id(STR_HAMBURGER_BTN)));
             _driverWait.Until(ExpectedConditions.ElementIsVisible(By.Id(STR_HAMBURGER_BTN)));
             _driverWait.Until(ExpectedConditions.ElementToBeClickable(By.Id(STR_HAMBURGER_BTN)));
+        }
+
+        /*Methods and functions for Dashboard*/
+        
+        private IList<IWebElement> GetListDashboard()
+        {
+            return objDashboardLST;
+        }
+
+        public void fnTotalDashboards()
+        {
+            _driverWait.Until(ExpectedConditions.ElementExists(By.XPath(STR_DASHBOARD_LST)));
+            for (int i = 0; i < objDashboardLST.Count(); i++)
+            {
+                Console.WriteLine(objDashboardLST[i].Text);
+            }
+
         }
 
     }
