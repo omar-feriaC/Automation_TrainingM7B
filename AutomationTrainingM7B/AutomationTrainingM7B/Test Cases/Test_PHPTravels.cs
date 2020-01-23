@@ -77,6 +77,15 @@ namespace AutomationTrainingM7B.Test_Cases
             //driver.Navigate().Back();
 
         }
+        [Test, Order(5)]
+        public void Test_SideBarMenu()
+        {
+            Test_M9Exercise();
+            //Parameter to test: Updates - General
+            objPHP.fnSideBarMenuElementOptions("General");
+            Assert.AreEqual(false, driver.Title.Contains("https://www.phptravels.net/admin/updates/"), "Page was not loaded correctly.");
+            driver.Navigate().Back();
+        }
     }
     
 }

@@ -38,7 +38,7 @@ namespace AutomationTrainingM7B.Page_Objects
         readonly static string STR_DASHBOARD_LB_BTN = "//ul[@id='social-sidebar-menu']/li[1]/a[1]";
         readonly static string STR_UPDATES_LB_BTN = "//span[text()='Updates']";
         readonly static string STR_MODULES_LB_BTN = "//a[@href='https://www.phptravels.net/admin/settings/modules/']";
-        readonly static string STR_GENERAL_DROPDPW_BTN = "//a[@href='#menu-ui']";
+        readonly static string STR_GENERAL_DROPDOWN_BTN = "//a[@href='#menu-ui']";
 
         readonly static string STR_TOTAL_TXT = "(//i[@class='fa fa-tag']/following-sibling::b)[1]";
 
@@ -66,6 +66,7 @@ namespace AutomationTrainingM7B.Page_Objects
         private static IWebElement objDashboardLabelBtn => _objDriver.FindElement(By.XPath(STR_DASHBOARD_LB_BTN));
         private static IWebElement objUpdatesBtn => _objDriver.FindElement(By.XPath(STR_UPDATES_LB_BTN));
         private static IWebElement objModulesBtn => _objDriver.FindElement(By.XPath(STR_MODULES_LB_BTN));
+        private static IWebElement objGeneralDropDownBtn => _objDriver.FindElement(By.XPath(STR_GENERAL_DROPDOWN_BTN));
 
 
         /*METHODS/FUNCTIONS*/
@@ -143,6 +144,11 @@ namespace AutomationTrainingM7B.Page_Objects
             // return objRememberMeLnk;
             return objModulesBtn;
         }
+        private IWebElement GetGeneralDropDownButton()
+        {
+            // return objRememberMeLnk;
+            return objGeneralDropDownBtn;
+        }
 
         public static void fnClickLoginButton()
         {
@@ -192,19 +198,19 @@ namespace AutomationTrainingM7B.Page_Objects
         public void fnClickUpdatesLbBtn()
         {
             
-            objUpdatesBtn.Click();
+           // objUpdatesBtn.Click();
             _driverWait.Until(ExpectedConditions.TitleContains("Updates"));//.ElementExists.(By.XPath()));
         }
         public static void fnClickModulesLbBtn()
         {
 
-            objModulesBtn.Click();
+            //objModulesBtn.Click();
             _driverWait.Until(ExpectedConditions.TitleContains("Modules"));//.ElementExists.(By.XPath()));
         }
         public void fnSideBarElements()
         {
-            fnDashboardElementButton();
-            objDashboardLabelBtn.Click();
+            //fnDashboardElementButton();
+            //objDashboardLabelBtn.Click();
             fnDashboardElementButton();
             //_driverWait.Until(ExpectedConditions.ElementExists(By.XPath(STR_DASHBOARD_LB_BTN)));
             //_driverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath(STR_DASHBOARD_LB_BTN)));
@@ -217,7 +223,50 @@ namespace AutomationTrainingM7B.Page_Objects
             _driverWait.Until(ExpectedConditions.ElementExists(By.XPath(STR_MODULES_LB_BTN)));
             _driverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath(STR_MODULES_LB_BTN)));
             _driverWait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(STR_MODULES_LB_BTN)));
-            objDashboardLabelBtn.Click();
+            //objDashboardLabelBtn.Click();
+
+        }
+        public void fnSideBarMenuElementOptions(string strMenuOptionCriteria)
+        {
+              
+            string[] arrMenu = new string[] { "Updates", "General" };
+            foreach (string strMenuOptionCriteria1 in arrMenu)
+            {
+                //Option without submenu
+                if (strMenuOptionCriteria == "Updates")
+                {
+                    _driverWait.Until(ExpectedConditions.ElementExists(By.XPath(STR_DASHBOARD_LB_BTN)));
+                    _driverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath(STR_DASHBOARD_LB_BTN)));
+                    _driverWait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(STR_DASHBOARD_LB_BTN)));
+                    objUpdatesBtn.Click();
+                }
+                //Option without submenu
+                else if (strMenuOptionCriteria == "General")
+                {
+                    _driverWait.Until(ExpectedConditions.ElementExists(By.XPath(STR_DASHBOARD_LB_BTN)));
+                    _driverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath(STR_DASHBOARD_LB_BTN)));
+                    _driverWait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(STR_DASHBOARD_LB_BTN)));
+                    objGeneralDropDownBtn.Click();
+                    objGeneralDropDownBtn.SendKeys(Keys.ArrowDown);
+                    objGeneralDropDownBtn.SendKeys(Keys.Enter);
+                }
+            }
+
+            //strMenuOptionCriteria = objGeneralDropDownBtn.ToString();
+            //strMenuOptionCriteria = objUpdatesBtn.ToString();
+            //if (strMenuOptionCriteria == "Updates")
+            //{
+            //    objUpdatesBtn.Click();
+            //}
+            //else
+            //{
+                
+            //}
+            //Option with submenu
+
+
+
+
 
         }
 
