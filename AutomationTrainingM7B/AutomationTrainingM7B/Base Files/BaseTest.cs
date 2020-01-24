@@ -79,7 +79,7 @@ namespace AutomationTrainingM7B.Base_Files
             driver.Url = strBrowserName;
             driver.Manage().Window.Maximize();
             objclsDriver = new clsDriver(driver);
-            //objTest = exTestSuit.CreateNode(TestContext.CurrentContext.Test.Name);
+           
             exTestCase = exTestSuit.CreateNode(TestContext.CurrentContext.Test.Name);
         }
 

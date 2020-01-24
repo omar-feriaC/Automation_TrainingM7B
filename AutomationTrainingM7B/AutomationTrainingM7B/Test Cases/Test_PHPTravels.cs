@@ -19,7 +19,7 @@ namespace AutomationTrainingM7B.Test_Cases
     {
         clsPHPTravels_LoginPage objPHP;
         string sreenPath;
-        public static WebDriverWait _driverWait;
+       
         
 
         [Test, Order(1)]
@@ -37,6 +37,7 @@ namespace AutomationTrainingM7B.Test_Cases
                 clsPHPTravels_LoginPage.fnClickLoginButton();
                 clsPHPTravels_LoginPage.fnWaitHamburgerMenu();
                 //Assert.AreEqual(true, driver.Title.Contains("Dashboard"), "The Dashboard was not loaded correctly.");
+                objPHP.fnListElments();
                 objPHP.fnDashboardElementsInRedBox();
                 //Create to bring the screenshot, next step: 
                 sreenPath = objRM.fnCaptureImage(driver, "Screenshot.png");
