@@ -9,7 +9,9 @@ using System.Threading.Tasks;
 using AutomationTrainingM7B.Reporting;
 using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
-
+using SeleniumExtras.WaitHelpers;
+using OpenQA.Selenium.Support.UI;
+using OpenQA.Selenium;
 
 namespace AutomationTrainingM7B.Test_Cases
 {
@@ -17,6 +19,8 @@ namespace AutomationTrainingM7B.Test_Cases
     {
         clsPHPTravels_LoginPage objPHP;
         string sreenPath;
+        public static WebDriverWait _driverWait;
+        
 
         [Test, Order(1)]
         public void Test_M9Exercise()
@@ -58,8 +62,12 @@ namespace AutomationTrainingM7B.Test_Cases
             {
                 objTest = exTestCase.CreateNode("Side Bar Menu", "Menu Option");
                 //Parameter to test: Updates - General
-                objPHP.fnSideBarMenuElementOptions("Updates");
-                sreenPath = objRM.fnCaptureImage(driver, "Screenshot.png");
+                objPHP.fnSideBarMenuElementOptions("General");
+
+                objPHP.fnDashboardElementButton();
+                //string wait= driver.Manage().Timeouts().ImplicitWait;
+
+                sreenPath = objRM.fnCaptureImage(driver, "SSMenuOption.png");
                 objTest.Log(AventStack.ExtentReports.Status.Pass, "Step ScreenShot :", MediaEntityBuilder.CreateScreenCaptureFromPath(sreenPath).Build());
             }
             catch (Exception e)

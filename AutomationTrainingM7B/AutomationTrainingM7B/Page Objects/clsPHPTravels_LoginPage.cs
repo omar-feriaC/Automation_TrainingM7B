@@ -197,7 +197,7 @@ namespace AutomationTrainingM7B.Page_Objects
             objTest.Log(AventStack.ExtentReports.Status.Info, "Total Guest : " + strTotalGuest);
             objTest.Log(AventStack.ExtentReports.Status.Info, "Total Bookings : " + strTotalBookings);
         }
-        public static void fnDashboardElementButton()
+        public void fnDashboardElementButton()
         {
             _driverWait.Until(ExpectedConditions.ElementExists(By.XPath(STR_DASHBOARD_LB_BTN)));
             _driverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath(STR_DASHBOARD_LB_BTN)));
