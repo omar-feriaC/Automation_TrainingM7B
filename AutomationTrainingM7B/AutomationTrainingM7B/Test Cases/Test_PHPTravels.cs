@@ -36,7 +36,6 @@ namespace AutomationTrainingM7B.Test_Cases
                 objPHP.fnDashboardElementsInRedBox();
                 //Create to bring the screenshot, next step: 
                 sreenPath = objRM.fnCaptureImage(driver, "Screenshot.png");
-
                 objTest.Log(AventStack.ExtentReports.Status.Pass, "Step ScreenShot :", MediaEntityBuilder.CreateScreenCaptureFromPath(sreenPath).Build());
             }
             catch (Exception e)
@@ -49,44 +48,43 @@ namespace AutomationTrainingM7B.Test_Cases
             }
 
         }
-        //[Test, Order(2)]
-        //public void Test_DashboardBtnSideBar()
-        //{
-        //    Test_M9Exercise();
-        //    objPHP.fnSideBarElements();
-        //    driver.Navigate().Back();
-        //    Assert.AreEqual(false, driver.Title.Contains("data:,"), "Page was not loaded correctly.");
-        //    driver.Navigate().Forward();
-        //}
-        //[Test, Order(3)]
-        //public void Test_UpdateBtnSideBar()
-        //{
-        //    Test_M9Exercise();
-        //    objPHP.fnSideBarElements();
-        //    Assert.AreEqual(false, driver.Title.Contains("https://www.phptravels.net/admin/updates/"), "Page was not loaded correctly.");
-        //    driver.Navigate().Back();          
-           
-        //}
-        //[Test, Order(4)]
-        //public void Test_ModulesBtnSideBar()
-        //{
-        //    Test_M9Exercise();
-        //    objPHP.fnSideBarElements();
-        //    //Assert.AreEqual(false, driver.Title.Contains("https://www.phptravels.net/admin/settings/modules/"), "Page was not loaded correctly.");
-            
-        //    //driver.Navigate().Back();
-
-        //}
+        
         [Test, Order(2)]
         public void Test_SideBarMenu()
         {
+
             Test_M9Exercise();
-            //Parameter to test: Updates - General
-            objPHP.fnSideBarMenuElementOptions("General");
-            string strMenuOp = objPHP.ToString();
-            Assert.AreEqual(false, driver.Title.Contains("https://www.phptravels.net/admin/settings/"), "Page was not loaded correctly.");
-            //https://www.phptravels.net/admin/updates/  
-            //driver.Navigate().Back();
+            try
+            {
+                objTest = exTestCase.CreateNode("Side Bar Menu", "Menu Option");
+                //Parameter to test: Updates - General
+                objPHP.fnSideBarMenuElementOptions("Updates");
+                sreenPath = objRM.fnCaptureImage(driver, "Screenshot.png");
+                objTest.Log(AventStack.ExtentReports.Status.Pass, "Step ScreenShot :", MediaEntityBuilder.CreateScreenCaptureFromPath(sreenPath).Build());
+            }
+            catch (Exception e)
+            {
+                if (!driver.Title.Equals("Updates")) { 
+
+                Assert.AreEqual(true, driver.Title.Contains("https://www.phptravels.net/admin/updates/ "), "Page was not loaded correctly.");
+                sreenPath = objRM.fnCaptureImage(driver, "Screenshot.png");
+                Console.WriteLine(e.Message);
+                Console.WriteLine("Test Case Failed");
+                exTestCase.Fail($"Test Case Failed Erro: {e.Message}");
+                }
+
+                if (!driver.Title.Equals("Application Settings")) { 
+                Assert.AreEqual(true, driver.Title.Contains("https://www.phptravels.net/admin/settings/"), "Page was not loaded correctly.");
+                sreenPath = objRM.fnCaptureImage(driver, "Screenshot.png");
+                Console.WriteLine(e.Message);
+                Console.WriteLine("Test Case Failed");
+                exTestCase.Fail($"Test Case Failed Erro: {e.Message}");
+                }
+                //driver.Navigate().Back();
+            }
+
+
+
         }
     }
     
