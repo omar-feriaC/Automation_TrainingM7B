@@ -110,6 +110,7 @@ namespace AutomationTrainingM7B.Page_Objects
             for (int i = 0; i < objDashboardLST.Count(); i++)
             {
                 Console.WriteLine(objDashboardLST[i].Text);
+                objTest.Log(AventStack.ExtentReports.Status.Info, $"{i+1} .- {objDashboardLST[i].Text}\n");
             }
 
         }
