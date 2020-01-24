@@ -39,8 +39,10 @@ namespace AutomationTrainingM7B.Page_Objects
         readonly static string STR_UPDATES_LB_BTN = "//span[text()='Updates']";
         readonly static string STR_MODULES_LB_BTN = "//a[@href='https://www.phptravels.net/admin/settings/modules/']";
         readonly static string STR_GENERAL_DROPDOWN_BTN = "//a[@href='#menu-ui']";
+        readonly static string STR_SETTINGS_DROPDOWN_BTN = "//ul[@id='menu-ui']/li[1]/a[1]";
 
         readonly static string STR_TOTAL_TXT = "(//i[@class='fa fa-tag']/following-sibling::b)[1]";
+
 
         /*CONSTRUCTOR*/
         public clsPHPTravels_LoginPage(IWebDriver pobjDriver)
@@ -67,6 +69,8 @@ namespace AutomationTrainingM7B.Page_Objects
         private static IWebElement objUpdatesBtn => _objDriver.FindElement(By.XPath(STR_UPDATES_LB_BTN));
         private static IWebElement objModulesBtn => _objDriver.FindElement(By.XPath(STR_MODULES_LB_BTN));
         private static IWebElement objGeneralDropDownBtn => _objDriver.FindElement(By.XPath(STR_GENERAL_DROPDOWN_BTN));
+
+        private static IWebElement objSettingsDropDownBtn => _objDriver.FindElement(By.XPath(STR_SETTINGS_DROPDOWN_BTN));
 
 
         /*METHODS/FUNCTIONS*/
@@ -149,6 +153,11 @@ namespace AutomationTrainingM7B.Page_Objects
             // return objRememberMeLnk;
             return objGeneralDropDownBtn;
         }
+        private IWebElement GetSettingsDropDownButton()
+        {
+            // return objRememberMeLnk;
+            return objSettingsDropDownBtn;
+        }
 
         public static void fnClickLoginButton()
         {
@@ -207,6 +216,12 @@ namespace AutomationTrainingM7B.Page_Objects
             //objModulesBtn.Click();
             _driverWait.Until(ExpectedConditions.TitleContains("Modules"));//.ElementExists.(By.XPath()));
         }
+        //public static void fnClickSettingsBtn()
+        //{
+
+        //    objSettingsDropDownBtn.Click();
+        //    //_driverWait.Until(ExpectedConditions.TitleContains("Modules"));//.ElementExists.(By.XPath()));
+        //}
         public void fnSideBarElements()
         {
             //fnDashboardElementButton();
@@ -229,9 +244,9 @@ namespace AutomationTrainingM7B.Page_Objects
         public void fnSideBarMenuElementOptions(string strMenuOptionCriteria)
         {
               
-            string[] arrMenu = new string[] { "Updates", "General" };
-            foreach (string strMenuOptionCriteria1 in arrMenu)
-            {
+            //string[] arrMenu = new string[2] { "Updates", "General" };
+            //foreach (string strMenuOptionCriteria1 in arrMenu)
+            //{
                 //Option without submenu
                 if (strMenuOptionCriteria == "Updates")
                 {
@@ -247,27 +262,13 @@ namespace AutomationTrainingM7B.Page_Objects
                     _driverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath(STR_DASHBOARD_LB_BTN)));
                     _driverWait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(STR_DASHBOARD_LB_BTN)));
                     objGeneralDropDownBtn.Click();
-                    objGeneralDropDownBtn.SendKeys(Keys.ArrowDown);
-                    objGeneralDropDownBtn.SendKeys(Keys.Enter);
+                    _driverWait.Until(ExpectedConditions.ElementExists(By.XPath(STR_SETTINGS_DROPDOWN_BTN)));
+                    _driverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath(STR_SETTINGS_DROPDOWN_BTN)));
+                    _driverWait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(STR_SETTINGS_DROPDOWN_BTN)));
+                    objSettingsDropDownBtn.Click();
+
                 }
-            }
-
-            //strMenuOptionCriteria = objGeneralDropDownBtn.ToString();
-            //strMenuOptionCriteria = objUpdatesBtn.ToString();
-            //if (strMenuOptionCriteria == "Updates")
-            //{
-            //    objUpdatesBtn.Click();
-            //}
-            //else
-            //{
-                
-            //}
-            //Option with submenu
-
-
-
-
-
+                else { }        
         }
 
 
