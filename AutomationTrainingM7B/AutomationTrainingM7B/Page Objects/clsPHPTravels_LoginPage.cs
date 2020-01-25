@@ -15,19 +15,14 @@ namespace AutomationTrainingM7B.Page_Objects
         /*ATTRIBUTES*/
         public static WebDriverWait _driverWait;
         private static IWebDriver _objDriver;
-        /*DRIVER REFERENCE*/       
+        /*DRIVER REFERENCE*/
 
         /*LOCATORS DESCRIPTION*/
         readonly static string STR_EMAIL_TXT = "email";
-        readonly static string STR_EMAIL_TXT2 = "email";
         readonly static string STR_PASSWORD_TXT = "password";
-        readonly static string STRREMEMBERME_LNK = "///label[@class='checkbox']";
-        readonly static string STRREMEMBERME_LNK2 = "//label[@class='checkbox']";
-        readonly static string STR_FORGOTPASS_LNK = "//*[text()='Forget Password']";
         readonly static string STR_LOGIN_BTN = "//span[text()='Login']";
         readonly static string STR_HAMBURGER_BTN = "sidebarCollapse";
-        readonly static string STR_HOME_PAGE_DASHBOARD_TXT= "//p[text()='DASHBOARD']";
-        /*DASHBOUARD ELEMENTS IN RED BOX*/       
+        /*DASHBOUARD ELEMENTS IN RED BOX*/
         readonly static string STR_TOTAL_ADMINS_TXT = "//div[@id='content']/div[2]/div[3]/ul[1]/li[1]/a[1]";
         readonly static string STR_TOTAL_SUPPLIERS_TXT = "//div[@id='content']/div[2]/div[3]/ul[1]/li[2]/a[1]";
         readonly static string STR_TOTAL_CUSTOMERS_TXT = "//div[@id='content']/div[2]/div[3]/ul[1]/li[3]/a[1]";
@@ -39,6 +34,9 @@ namespace AutomationTrainingM7B.Page_Objects
         readonly static string STR_MODULES_LB_BTN = "//a[@href='https://www.phptravels.net/admin/settings/modules/']";
         readonly static string STR_GENERAL_DROPDOWN_BTN = "//a[@href='#menu-ui']";
         readonly static string STR_SETTINGS_DROPDOWN_BTN = "//ul[@id='menu-ui']/li[1]/a[1]";
+        /*Account Menu*/
+        readonly static string STR_ACCOUNT_OPTION_BTN = "//a[@href='#ACCOUNTS']";
+        readonly static string STR_ACCOUNT_CUSTOMER_OPTION_BTN = "//ul[@id='ACCOUNTS']/li[3]/a[1]";
         //Elements inside of the list
         readonly static string STR_ElMLIST_TXT = "//*[@class='serverHeader__statsList']//a";
 
@@ -46,9 +44,9 @@ namespace AutomationTrainingM7B.Page_Objects
         public clsPHPTravels_LoginPage(IWebDriver pobjDriver)
         {
             //driver = pobjDriver;
-            _objDriver = pobjDriver;    
+            _objDriver = pobjDriver;
             _driverWait = new WebDriverWait(_objDriver, new TimeSpan(0, 0, 40));
-        }      
+        }
 
         /*OBJECT DEFINITION*/
         private static IWebElement objEmailTxt => _objDriver.FindElement(By.Name(STR_EMAIL_TXT));
@@ -68,6 +66,8 @@ namespace AutomationTrainingM7B.Page_Objects
         private static IWebElement objSettingsDropDownBtn => _objDriver.FindElement(By.XPath(STR_SETTINGS_DROPDOWN_BTN));
         //Elements in list
         private static IList<IWebElement> objElementsTxt => _objDriver.FindElements(By.XPath(STR_ElMLIST_TXT));
+        private static IWebElement objAccountBtn => _objDriver.FindElement(By.XPath(STR_ACCOUNT_OPTION_BTN));
+        private static IWebElement objAccountCustomerBtn => _objDriver.FindElement(By.XPath(STR_ACCOUNT_CUSTOMER_OPTION_BTN));
 
 
         /*METHODS/FUNCTIONS*/
@@ -91,7 +91,6 @@ namespace AutomationTrainingM7B.Page_Objects
         {
             return objPasswordTxt;
         }
-
         public static void fnEnterPassword(string pstrPass)
         {
             _driverWait.Until(ExpectedConditions.ElementExists(By.Name(STR_PASSWORD_TXT)));
@@ -99,19 +98,15 @@ namespace AutomationTrainingM7B.Page_Objects
             objPasswordTxt.Clear();
             objPasswordTxt.SendKeys(pstrPass);
         }
-
         //Login Button
         private IWebElement GetLoginButton()
-        {
-           // return objRememberMeLnk;
+        {           
             return objLoginBtn;
         }
-
         //Elements values in red box
         public IWebElement GetTotalAminsTxt()
         {
             return objTotalAminsInt;
-
         }
         public IWebElement GetTotalSuppliersTxt()
         {
@@ -131,47 +126,56 @@ namespace AutomationTrainingM7B.Page_Objects
         }
         //SIDE BAR ELEMENTS
         private IWebElement GetDashboardButton()
-        {
-            // return objRememberMeLnk;
+        {            
             return objDashboardLabelBtn;
-        }        
+        }
         private IWebElement GetUpdatesButton()
-        {
-            // return objRememberMeLnk;
+        {           
             return objUpdatesBtn;
         }
         private IWebElement GetModulesButton()
-        {
-            // return objRememberMeLnk;
+        {            
             return objModulesBtn;
         }
         private IWebElement GetGeneralDropDownButton()
-        {
-            // return objRememberMeLnk;
+        {           
             return objGeneralDropDownBtn;
         }
         private IWebElement GetSettingsDropDownButton()
         {
-            // return objRememberMeLnk;
             return objSettingsDropDownBtn;
         }
-
+        private IWebElement GetAccountButton()
+        {            
+            return objAccountBtn;
+        }
+        private IWebElement GetAccountCustomerButton()
+        {           
+            return objAccountCustomerBtn;
+        }
+        public void fnSortAccountSubMenu()
+        {
+            // _driverWait.Until(ExpectedConditions.UrlContains("ACCOUNTS"));
+            _driverWait.Until(ExpectedConditions.ElementExists(By.XPath(STR_ACCOUNT_OPTION_BTN)));
+            _driverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath(STR_ACCOUNT_OPTION_BTN)));
+            _driverWait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(STR_ACCOUNT_OPTION_BTN)));
+            objAccountBtn.Click();
+            _driverWait.Until(ExpectedConditions.ElementExists(By.XPath(STR_ACCOUNT_CUSTOMER_OPTION_BTN)));
+            _driverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath(STR_ACCOUNT_CUSTOMER_OPTION_BTN)));
+            _driverWait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(STR_ACCOUNT_CUSTOMER_OPTION_BTN)));
+            objAccountCustomerBtn.Click();
+                       
+        }
+        //fnSortAccountSubMenu
         public static void fnClickLoginButton()
         {
             _driverWait.Until(ExpectedConditions.ElementExists(By.XPath(STR_LOGIN_BTN)));
             _driverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath(STR_LOGIN_BTN)));
             _driverWait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(STR_LOGIN_BTN)));
             objLoginBtn.Click();
-        }
+        }     
 
-        /*Hamburger Button*/
-        public static void fnWaitHamburgerMenu()
-        {
-            _driverWait.Until(ExpectedConditions.ElementExists(By.Id(STR_HAMBURGER_BTN)));
-            _driverWait.Until(ExpectedConditions.ElementIsVisible(By.Id(STR_HAMBURGER_BTN)));
-            _driverWait.Until(ExpectedConditions.ElementToBeClickable(By.Id(STR_HAMBURGER_BTN)));
-        }
-        public void fnDashboardElementsInRedBox()
+        public void fnDashboardElementsInRedBoxForReport()
         {
 
             string strTotalAdmins = objTotalAminsInt.GetAttribute("innerHTML").ToString();
@@ -179,16 +183,7 @@ namespace AutomationTrainingM7B.Page_Objects
             string strTotalCustomers = objTotalCustomersInt.GetAttribute("innerHTML").ToString();
             string strTotalGuest = objTotalGuestInt.GetAttribute("innerHTML").ToString();
             string strTotalBookings = objTotalBookingsInt.GetAttribute("innerHTML").ToString();
-                    
-            //Console.WriteLine("****************Dashboard Element Valus In Red Box*****************");
-            //Console.WriteLine(""); 
-            //Console.WriteLine("");            
-            //Console.WriteLine("Total Admins:    " + strTotalAdmins);            
-            //Console.WriteLine("Total Suppliers: " + strTotalupplier);
-            //Console.WriteLine("Total Customers: " + strTotalCustomers);
-            //Console.WriteLine("Total Guest:     " + strTotalGuest);
-            //Console.WriteLine("Total Bookings:  " + strTotalBookings);
-
+            
             objTest.Log(AventStack.ExtentReports.Status.Info,"" + strTotalAdmins);
             objTest.Log(AventStack.ExtentReports.Status.Info, "" + strTotalupplier);
             objTest.Log(AventStack.ExtentReports.Status.Info, "" + strTotalCustomers);
@@ -204,17 +199,16 @@ namespace AutomationTrainingM7B.Page_Objects
         }
         public void fnClickUpdatesLbBtn()
         {           
-           _driverWait.Until(ExpectedConditions.TitleContains("Updates"));//.ElementExists.(By.XPath()));
+           _driverWait.Until(ExpectedConditions.TitleContains("Updates"));
         }
         public static void fnClickModulesLbBtn()
-        {           
-            _driverWait.Until(ExpectedConditions.TitleContains("Modules"));//.ElementExists.(By.XPath()));
+        {
+            _driverWait.Until(ExpectedConditions.TitleContains("Modules"));
         }
-       
+
         public void fnSideBarElements()
         {
-            //fnDashboardElementButton();
-            //objDashboardLabelBtn.Click();
+           
             fnDashboardElementButton();
            
             fnClickUpdatesLbBtn();
@@ -224,9 +218,24 @@ namespace AutomationTrainingM7B.Page_Objects
             fnClickModulesLbBtn();
             _driverWait.Until(ExpectedConditions.ElementExists(By.XPath(STR_MODULES_LB_BTN)));
             _driverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath(STR_MODULES_LB_BTN)));
-            _driverWait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(STR_MODULES_LB_BTN)));
-            //objDashboardLabelBtn.Click();
+            _driverWait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(STR_MODULES_LB_BTN)));          
 
+        }
+        //Returns all elements form list
+        private IList<IWebElement> GetElementsList()
+        {            
+            return objElementsTxt;
+        }
+        //Go through the list up to the last element returned
+        public void fnGoThroughListElments()
+        {
+            Console.WriteLine("****************Dashboard Element Values In Red Box*****************");
+            objTest.Log(AventStack.ExtentReports.Status.Info, "Dashboard Element Values In Red Box");
+
+            foreach (IWebElement element in objElementsTxt)
+            {
+                Console.WriteLine(element.Text);//It will print all the elements in the list
+            }
         }
         public void fnSideBarMenuElementOptions(string strMenuOptionCriteria)
         {             
@@ -238,6 +247,9 @@ namespace AutomationTrainingM7B.Page_Objects
                     _driverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath(STR_DASHBOARD_LB_BTN)));
                     _driverWait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(STR_DASHBOARD_LB_BTN)));
                     objUpdatesBtn.Click();
+                    _driverWait.Until(ExpectedConditions.TitleContains("Updates"));                  
+                   objTest.Log(AventStack.ExtentReports.Status.Info, "Updates Side Bar Option Screenshot");
+
                 }
                 //Option without submenu
                 else if (strMenuOptionCriteria == "General")
@@ -250,24 +262,13 @@ namespace AutomationTrainingM7B.Page_Objects
                     _driverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath(STR_SETTINGS_DROPDOWN_BTN)));
                     _driverWait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(STR_SETTINGS_DROPDOWN_BTN)));
                     objSettingsDropDownBtn.Click();
+                    _driverWait.Until(ExpectedConditions.TitleContains("Application Settings"));
+                    objTest.Log(AventStack.ExtentReports.Status.Info, "General Side Bar Settings SubMenu Option Screenshot");
 
                 }
-                else { }        
+            else { }        
         }
-        private IList<IWebElement>  GetElementsList()
-        {
-            // return obj;
-            return objElementsTxt;
-        }
-        public void fnListElments()
-        {
-            Console.WriteLine("****************Dashboard Element Values In Red Box*****************");
-            //Go through the list up to the last element returned
-            foreach (IWebElement element in objElementsTxt)
-            {
-                Console.WriteLine(element.Text);//It will print all the elements in the list
-            }
-        }
+      
 
 
     }

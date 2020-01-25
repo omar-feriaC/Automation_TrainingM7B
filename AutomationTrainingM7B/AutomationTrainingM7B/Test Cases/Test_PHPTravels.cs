@@ -19,8 +19,9 @@ namespace AutomationTrainingM7B.Test_Cases
     {
         clsPHPTravels_LoginPage objPHP;
         string sreenPath;
-       
+        public static WebDriverWait _driverWait;
         
+
 
         [Test, Order(1)]
         public void Test_M9Exercise()
@@ -34,11 +35,10 @@ namespace AutomationTrainingM7B.Test_Cases
                 Assert.AreEqual(true, driver.Title.Contains("Administator Login"), "The Login Page was not loaded correctly.");
                 clsPHPTravels_LoginPage.fnEnterEmail("admin@phptravels.com");
                 clsPHPTravels_LoginPage.fnEnterPassword("demoadmin");
-                clsPHPTravels_LoginPage.fnClickLoginButton();
-                clsPHPTravels_LoginPage.fnWaitHamburgerMenu();
-                //Assert.AreEqual(true, driver.Title.Contains("Dashboard"), "The Dashboard was not loaded correctly.");
-                objPHP.fnListElments();
-                objPHP.fnDashboardElementsInRedBox();
+                clsPHPTravels_LoginPage.fnClickLoginButton();               
+               
+                objPHP.fnGoThroughListElments();
+                objPHP.fnDashboardElementsInRedBoxForReport();
                 //Create to bring the screenshot, next step: 
                 sreenPath = objRM.fnCaptureImage(driver, "Screenshot.png");
                 objTest.Log(AventStack.ExtentReports.Status.Pass, "Step ScreenShot :", MediaEntityBuilder.CreateScreenCaptureFromPath(sreenPath).Build());
@@ -62,12 +62,14 @@ namespace AutomationTrainingM7B.Test_Cases
             try
             {
                 objTest = exTestCase.CreateNode("Side Bar Menu", "Menu Option");
-                //Parameter to test: Updates - General
-                objPHP.fnSideBarMenuElementOptions("General");
 
+                //**************************************************
+                //   M E T H O D S PARAMETERS: Updates -- General //
+                //**************************************************
+                objPHP.fnSideBarMenuElementOptions("Updates");
                 objPHP.fnDashboardElementButton();
-                //string wait= driver.Manage().Timeouts().ImplicitWait;
-
+               
+                //Screenshot
                 sreenPath = objRM.fnCaptureImage(driver, "SSMenuOption.png");
                 objTest.Log(AventStack.ExtentReports.Status.Pass, "Step ScreenShot :", MediaEntityBuilder.CreateScreenCaptureFromPath(sreenPath).Build());
             }
@@ -76,6 +78,7 @@ namespace AutomationTrainingM7B.Test_Cases
                 if (!driver.Title.Equals("Updates")) { 
 
                 Assert.AreEqual(true, driver.Title.Contains("https://www.phptravels.net/admin/updates/ "), "Page was not loaded correctly.");
+                _driverWait.Until(ExpectedConditions.UrlContains("Updates"));
                 sreenPath = objRM.fnCaptureImage(driver, "Screenshot.png");
                 Console.WriteLine(e.Message);
                 Console.WriteLine("Test Case Failed");
@@ -84,17 +87,22 @@ namespace AutomationTrainingM7B.Test_Cases
 
                 if (!driver.Title.Equals("Application Settings")) { 
                 Assert.AreEqual(true, driver.Title.Contains("https://www.phptravels.net/admin/settings/"), "Page was not loaded correctly.");
+                _driverWait.Until(ExpectedConditions.UrlContains("Updates"));
                 sreenPath = objRM.fnCaptureImage(driver, "Screenshot.png");
                 Console.WriteLine(e.Message);
                 Console.WriteLine("Test Case Failed");
                 exTestCase.Fail($"Test Case Failed Erro: {e.Message}");
-                }
-                //driver.Navigate().Back();
+                }                
             }
-
-
-
         }
+        [Test, Order(3)]
+        public void Test_SortAccountsOption()
+        {
+            Test_M9Exercise();
+            objPHP = new clsPHPTravels_LoginPage(driver);
+            objPHP.fnSortAccountSubMenu();
+        }
+
     }
     
 }
