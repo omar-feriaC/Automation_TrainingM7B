@@ -28,7 +28,10 @@ namespace AutomationTrainingM7B.Test_Cases
         {
             try
             {
-                objTest = exTestCase.CreateNode("Dashboard", "Elements in Red Box");
+                //**********************************************
+                //  DASHBOARD ELEMENTS IN RED BOX             //
+                //**********************************************
+                objTest = exTestCase.CreateNode("DASHBOARD", "ELEMENTS IN RED BOX");
                 //Init objects
                 objPHP = new clsPHPTravels_LoginPage(driver);
                 //Login Action
@@ -60,15 +63,12 @@ namespace AutomationTrainingM7B.Test_Cases
 
             Test_M9Exercise();
             try
-            {
-                objTest = exTestCase.CreateNode("Side Bar Menu", "Menu Option");
-
-                //**************************************************
-                //   M E T H O D S PARAMETERS: Updates -- General //
-                //**************************************************
+            {   //***********************************************
+                //   METHOD PARAMETERS: Updates -- General     //
+                //***********************************************
+                objTest = exTestCase.CreateNode("SIDE BAR MENU", "MENU OPTION");               
                 objPHP.fnSideBarMenuElementOptions("Updates");
-                objPHP.fnDashboardElementButton();
-               
+                objPHP.fnDashboardElementButton();               
                 //Screenshot
                 sreenPath = objRM.fnCaptureImage(driver, "SSMenuOption.png");
                 objTest.Log(AventStack.ExtentReports.Status.Pass, "Step ScreenShot :", MediaEntityBuilder.CreateScreenCaptureFromPath(sreenPath).Build());
@@ -99,8 +99,26 @@ namespace AutomationTrainingM7B.Test_Cases
         public void Test_SortAccountsOption()
         {
             Test_M9Exercise();
-            objPHP = new clsPHPTravels_LoginPage(driver);
-            objPHP.fnSortAccountSubMenu();
+            try
+            {
+                //***********************************************
+                //      ACCOUNT-SUBMENU OPTION -SORTING        //
+                //***********************************************
+                objTest = exTestCase.CreateNode("ACCOUNT", "CUSTOMERS SUB-MENU TO SORT");
+                objPHP = new clsPHPTravels_LoginPage(driver);
+                objPHP.fnSortAccountSubMenu();
+                //Screenshot
+                sreenPath = objRM.fnCaptureImage(driver, "SSMenuOption.png");
+                objTest.Log(AventStack.ExtentReports.Status.Pass, "Step ScreenShot :", MediaEntityBuilder.CreateScreenCaptureFromPath(sreenPath).Build());
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual(true, driver.Title.Contains("Customer Management"), "The Dashboard was not loaded correctly.");
+                objTest.Log(AventStack.ExtentReports.Status.Error, "Step has failed with SS", MediaEntityBuilder.CreateScreenCaptureFromPath(sreenPath).Build());
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Test Case Failed");
+                exTestCase.Fail($"Test Case Failed Erro: {ex.Message}");
+            }
         }
 
     }
