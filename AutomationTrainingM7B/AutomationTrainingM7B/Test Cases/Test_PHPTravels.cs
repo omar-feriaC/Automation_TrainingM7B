@@ -35,6 +35,12 @@ namespace AutomationTrainingM7B.Test_Cases
             objPHP.fnTotalDashboards();            
             Assert.AreEqual(true, driver.Title.Contains("Dashboard"), "The Dashboard was not loaded correctly.");
             objTest.Pass("Dashboard results are displayed correctly.");//finaliza step
+
+            /*Part 2*/
+            objTest = objTest.CreateNode("Exercise Part 2", "Side Bar Menu");//Creating node on the actual report
+            objPHP.fnClickMenuOption("coupons");
+            objPHP.fnClickMenuOption("Accounts", "Admins");
+            objPHP.fnClickMenuOption("Accounts", "Suppliers");
         }
 
     }
