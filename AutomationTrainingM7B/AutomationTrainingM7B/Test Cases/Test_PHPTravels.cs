@@ -38,8 +38,9 @@ namespace AutomationTrainingM7B.Test_Cases
                 Assert.AreEqual(true, driver.Title.Contains("Administator Login"), "The Login Page was not loaded correctly.");
                 clsPHPTravels_LoginPage.fnEnterEmail("admin@phptravels.com");
                 clsPHPTravels_LoginPage.fnEnterPassword("demoadmin");
-                clsPHPTravels_LoginPage.fnClickLoginButton();               
-               
+                clsPHPTravels_LoginPage.fnClickLoginButton();
+                //_driverWait.Until(ExpectedConditions.UrlContains("admin"));
+
                 objPHP.fnGoThroughListElments();
                 objPHP.fnDashboardElementsInRedBoxForReport();
                 //Create to bring the screenshot, next step: 

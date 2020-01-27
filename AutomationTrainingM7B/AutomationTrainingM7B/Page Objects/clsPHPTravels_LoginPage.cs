@@ -37,6 +37,9 @@ namespace AutomationTrainingM7B.Page_Objects
         /*Account Menu*/
         readonly static string STR_ACCOUNT_OPTION_BTN = "//a[@href='#ACCOUNTS']";
         readonly static string STR_ACCOUNT_CUSTOMER_OPTION_BTN = "//ul[@id='ACCOUNTS']/li[3]/a[1]";
+        readonly static string STR_FIRST_NAME_SORT_BTN = "(//th[@class='xcrud-column xcrud-action'])[1]";
+        readonly static string STR_SORT_FN_STATUS_DESC_ASC_BTN = "//th[@data-orderby='pt_accounts.ai_first_name']";
+
         //Elements inside of the list
         readonly static string STR_ElMLIST_TXT = "//*[@class='serverHeader__statsList']//a";
 
@@ -68,6 +71,8 @@ namespace AutomationTrainingM7B.Page_Objects
         private static IList<IWebElement> objElementsTxt => _objDriver.FindElements(By.XPath(STR_ElMLIST_TXT));
         private static IWebElement objAccountBtn => _objDriver.FindElement(By.XPath(STR_ACCOUNT_OPTION_BTN));
         private static IWebElement objAccountCustomerBtn => _objDriver.FindElement(By.XPath(STR_ACCOUNT_CUSTOMER_OPTION_BTN));
+        private static IWebElement objFirstNameSortBtn => _objDriver.FindElement(By.XPath(STR_FIRST_NAME_SORT_BTN));
+        private static IWebElement objSortFNStatusDescAscBtn => _objDriver.FindElement(By.XPath(STR_SORT_FN_STATUS_DESC_ASC_BTN));
 
 
         /*METHODS/FUNCTIONS*/
@@ -153,6 +158,14 @@ namespace AutomationTrainingM7B.Page_Objects
         {           
             return objAccountCustomerBtn;
         }
+        private IWebElement GetFirstNameSortButton()
+        {
+            return objFirstNameSortBtn;
+        }
+        private IWebElement GetSortDescAscStatusButton()
+        {
+            return objSortFNStatusDescAscBtn;
+        }
         public void fnSortAccountSubMenu()
         {
             // _driverWait.Until(ExpectedConditions.UrlContains("ACCOUNTS"));
@@ -164,8 +177,38 @@ namespace AutomationTrainingM7B.Page_Objects
             _driverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath(STR_ACCOUNT_CUSTOMER_OPTION_BTN)));
             _driverWait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(STR_ACCOUNT_CUSTOMER_OPTION_BTN)));
             objAccountCustomerBtn.Click();
-                       
+            _driverWait.Until(ExpectedConditions.ElementExists(By.XPath(STR_FIRST_NAME_SORT_BTN)));
+            _driverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath(STR_FIRST_NAME_SORT_BTN)));
+            _driverWait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(STR_FIRST_NAME_SORT_BTN)));
+
+            // objFirstNameSortBtn.Click();
+            string strFirstNameStatus = objSortFNStatusDescAscBtn.GetAttribute("innerHTML").ToString();
+           // string strFirstNameStatus = objSortFNStatusDescAscBtn.ToString();
+            if (strFirstNameStatus == "First Name")
+            {
+
+                objFirstNameSortBtn.Click();
+                _driverWait.Until(ExpectedConditions.ElementExists(By.XPath(STR_SORT_FN_STATUS_DESC_ASC_BTN)));
+                _driverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath(STR_SORT_FN_STATUS_DESC_ASC_BTN)));
+                _driverWait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(STR_SORT_FN_STATUS_DESC_ASC_BTN)));
+
+            }
+            GetSortDescAscStatusButton();
+            string strFirstNameStatusAfterClick = objSortFNStatusDescAscBtn.GetAttribute("innerHTML").ToString();
+            if (strFirstNameStatusAfterClick == "↓ First Name")
+            {
+                //Console.WriteLine("****************First Name sorted Descendently*****************");
+                //Console.WriteLine(strFirstNameStatusAfterClick);
+                objTest.Log(AventStack.ExtentReports.Status.Info, "First Name sorted Descendently After First Click");
+                objTest.Log(AventStack.ExtentReports.Status.Info, "SORT DESC : " + strFirstNameStatusAfterClick);
+
+            } 
+
+            
+
         }
+
+
         //fnSortAccountSubMenu
         public static void fnClickLoginButton()
         {
