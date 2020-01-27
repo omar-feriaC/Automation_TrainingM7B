@@ -24,6 +24,9 @@ namespace AutomationTrainingM7B.Base_Files
         public static IWebDriver driver;
         /*URL for Webdriver*/
         private static string strBrowserName = ConfigurationManager.AppSettings.Get("url");
+        protected static string strUserName = ConfigurationManager.AppSettings.Get("email");
+        protected static string strPassword = ConfigurationManager.AppSettings.Get("password");
+
         /*Extent Reports Framework*/
         public static clsReportManager objRM = new clsReportManager();
         public static ExtentV3HtmlReporter objHtmlReporter; //Add information in HTML
