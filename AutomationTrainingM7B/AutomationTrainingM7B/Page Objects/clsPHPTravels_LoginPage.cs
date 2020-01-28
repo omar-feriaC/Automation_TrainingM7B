@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NUnit.Framework;
+
 
 namespace AutomationTrainingM7B.Page_Objects
 {
@@ -37,7 +39,9 @@ namespace AutomationTrainingM7B.Page_Objects
         /*Account Menu*/
         readonly static string STR_ACCOUNT_OPTION_BTN = "//a[@href='#ACCOUNTS']";
         readonly static string STR_ACCOUNT_CUSTOMER_OPTION_BTN = "//ul[@id='ACCOUNTS']/li[3]/a[1]";
-        readonly static string STR_FIRST_NAME_SORT_BTN = "(//th[@class='xcrud-column xcrud-action'])[1]";
+        readonly static string STR_FIRST_NAME_SORT_BTN = "(//th[contains(@class,'xcrud-column xcrud-action')])[1]";
+        readonly static string STR_FIRST_NAME_TXT = "//th[text()='First Name']";
+
         readonly static string STR_SORT_FN_STATUS_DESC_ASC_BTN = "//th[@data-orderby='pt_accounts.ai_first_name']";
 
         //Elements inside of the list
@@ -72,6 +76,7 @@ namespace AutomationTrainingM7B.Page_Objects
         private static IWebElement objAccountBtn => _objDriver.FindElement(By.XPath(STR_ACCOUNT_OPTION_BTN));
         private static IWebElement objAccountCustomerBtn => _objDriver.FindElement(By.XPath(STR_ACCOUNT_CUSTOMER_OPTION_BTN));
         private static IWebElement objFirstNameSortBtn => _objDriver.FindElement(By.XPath(STR_FIRST_NAME_SORT_BTN));
+        private static IWebElement objFirstNameTxt => _objDriver.FindElement(By.XPath(STR_FIRST_NAME_TXT));
         private static IWebElement objSortFNStatusDescAscBtn => _objDriver.FindElement(By.XPath(STR_SORT_FN_STATUS_DESC_ASC_BTN));
 
 
@@ -105,7 +110,7 @@ namespace AutomationTrainingM7B.Page_Objects
         }
         //Login Button
         private IWebElement GetLoginButton()
-        {           
+        {
             return objLoginBtn;
         }
         //Elements values in red box
@@ -131,19 +136,19 @@ namespace AutomationTrainingM7B.Page_Objects
         }
         //SIDE BAR ELEMENTS
         private IWebElement GetDashboardButton()
-        {            
+        {
             return objDashboardLabelBtn;
         }
         private IWebElement GetUpdatesButton()
-        {           
+        {
             return objUpdatesBtn;
         }
         private IWebElement GetModulesButton()
-        {            
+        {
             return objModulesBtn;
         }
         private IWebElement GetGeneralDropDownButton()
-        {           
+        {
             return objGeneralDropDownBtn;
         }
         private IWebElement GetSettingsDropDownButton()
@@ -151,20 +156,38 @@ namespace AutomationTrainingM7B.Page_Objects
             return objSettingsDropDownBtn;
         }
         private IWebElement GetAccountButton()
-        {            
+        {
             return objAccountBtn;
         }
         private IWebElement GetAccountCustomerButton()
-        {           
+        {
             return objAccountCustomerBtn;
         }
         private IWebElement GetFirstNameSortButton()
         {
             return objFirstNameSortBtn;
         }
+        private IWebElement GetFirstNameTxt()
+        {
+            return objFirstNameTxt;
+        }
         private IWebElement GetSortDescAscStatusButton()
         {
             return objSortFNStatusDescAscBtn;
+        }
+        public void fnFirstNameTxt()
+        {
+            _driverWait.Until(ExpectedConditions.ElementExists(By.XPath(STR_FIRST_NAME_TXT)));
+            _driverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath(STR_FIRST_NAME_TXT)));
+            _driverWait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(STR_FIRST_NAME_TXT)));
+            //Assert.AreEqual(true, driver.PageSource.Equals(By.XPath(STR_FIRST_NAME_SORT_BTN)));
+            //Assert.AreEqual(true, driver.Title.Contains("Administator Login"), "The Login Page was not loaded correctly.");
+        }
+        public void fnFindFirstNameBtn()
+        {
+            _driverWait.Until(ExpectedConditions.ElementExists(By.XPath(STR_FIRST_NAME_SORT_BTN)));
+            _driverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath(STR_FIRST_NAME_SORT_BTN)));
+            _driverWait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(STR_FIRST_NAME_SORT_BTN)));
         }
         public void fnSortAccountSubMenu()
         {
@@ -180,13 +203,16 @@ namespace AutomationTrainingM7B.Page_Objects
             _driverWait.Until(ExpectedConditions.ElementExists(By.XPath(STR_FIRST_NAME_SORT_BTN)));
             _driverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath(STR_FIRST_NAME_SORT_BTN)));
             _driverWait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(STR_FIRST_NAME_SORT_BTN)));
+            fnFindFirstNameBtn();
 
             // objFirstNameSortBtn.Click();
             string strFirstNameStatus = objSortFNStatusDescAscBtn.GetAttribute("innerHTML").ToString();
            // string strFirstNameStatus = objSortFNStatusDescAscBtn.ToString();
             if (strFirstNameStatus == "First Name")
             {
-
+                _driverWait.Until(ExpectedConditions.ElementExists(By.XPath(STR_FIRST_NAME_SORT_BTN)));
+                _driverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath(STR_FIRST_NAME_SORT_BTN)));
+                _driverWait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(STR_FIRST_NAME_SORT_BTN)));
                 objFirstNameSortBtn.Click();
                 _driverWait.Until(ExpectedConditions.ElementExists(By.XPath(STR_SORT_FN_STATUS_DESC_ASC_BTN)));
                 _driverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath(STR_SORT_FN_STATUS_DESC_ASC_BTN)));
@@ -220,6 +246,7 @@ namespace AutomationTrainingM7B.Page_Objects
 
         public void fnDashboardElementsInRedBoxForReport()
         {
+            DashboardElements();
 
             string strTotalAdmins = objTotalAminsInt.GetAttribute("innerHTML").ToString();
             string strTotalupplier = objTotalSuppliersInt.GetAttribute("innerHTML").ToString();
@@ -233,12 +260,35 @@ namespace AutomationTrainingM7B.Page_Objects
             objTest.Log(AventStack.ExtentReports.Status.Info, "" + strTotalGuest);
             objTest.Log(AventStack.ExtentReports.Status.Info, "" + strTotalBookings);
         }
+
         public void fnDashboardElementButton()
         {
             _driverWait.Until(ExpectedConditions.ElementExists(By.XPath(STR_DASHBOARD_LB_BTN)));
             _driverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath(STR_DASHBOARD_LB_BTN)));
             _driverWait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(STR_DASHBOARD_LB_BTN)));
-            
+
+            //_driverWait.Until(ExpectedConditions.ElementExists(By.XPath(STR_TOTAL_ADMINS_TXT)));
+            //_driverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath(STR_TOTAL_ADMINS_TXT)));
+            //_driverWait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(STR_TOTAL_ADMINS_TXT)));
+
+        }
+        public void DashboardElements()
+        {
+            _driverWait.Until(ExpectedConditions.ElementExists(By.XPath(STR_TOTAL_ADMINS_TXT)));
+            _driverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath(STR_TOTAL_ADMINS_TXT)));
+            _driverWait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(STR_TOTAL_ADMINS_TXT)));
+            _driverWait.Until(ExpectedConditions.ElementExists(By.XPath(STR_TOTAL_SUPPLIERS_TXT)));
+            _driverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath(STR_TOTAL_SUPPLIERS_TXT)));
+            _driverWait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(STR_TOTAL_SUPPLIERS_TXT)));
+            _driverWait.Until(ExpectedConditions.ElementExists(By.XPath(STR_TOTAL_CUSTOMERS_TXT)));
+            _driverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath(STR_TOTAL_CUSTOMERS_TXT)));
+            _driverWait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(STR_TOTAL_CUSTOMERS_TXT)));
+            _driverWait.Until(ExpectedConditions.ElementExists(By.XPath(STR_TOTAL_GUEST_TXT)));
+            _driverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath(STR_TOTAL_GUEST_TXT)));
+            _driverWait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(STR_TOTAL_GUEST_TXT)));
+            _driverWait.Until(ExpectedConditions.ElementExists(By.XPath(STR_TOTAL_BOOKINGS_TXT)));
+            _driverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath(STR_TOTAL_BOOKINGS_TXT)));
+            _driverWait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(STR_TOTAL_BOOKINGS_TXT)));
         }
         public void fnClickUpdatesLbBtn()
         {           
@@ -272,6 +322,8 @@ namespace AutomationTrainingM7B.Page_Objects
         //Go through the list up to the last element returned
         public void fnGoThroughListElments()
         {
+            DashboardElements();
+
             Console.WriteLine("****************Dashboard Element Values In Red Box*****************");
             objTest.Log(AventStack.ExtentReports.Status.Info, "Dashboard Element Values In Red Box");
 

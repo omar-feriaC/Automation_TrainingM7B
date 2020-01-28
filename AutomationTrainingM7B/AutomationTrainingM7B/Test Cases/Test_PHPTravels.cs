@@ -19,9 +19,9 @@ namespace AutomationTrainingM7B.Test_Cases
     {
         clsPHPTravels_LoginPage objPHP;
         string sreenPath;
-        public static WebDriverWait _driverWait;
-        
+        public static WebDriverWait _driverWait;  
 
+        
 
         [Test, Order(1)]
         public void Test_M9Exercise()
@@ -38,8 +38,7 @@ namespace AutomationTrainingM7B.Test_Cases
                 Assert.AreEqual(true, driver.Title.Contains("Administator Login"), "The Login Page was not loaded correctly.");
                 clsPHPTravels_LoginPage.fnEnterEmail("admin@phptravels.com");
                 clsPHPTravels_LoginPage.fnEnterPassword("demoadmin");
-                clsPHPTravels_LoginPage.fnClickLoginButton();
-                //_driverWait.Until(ExpectedConditions.UrlContains("admin"));
+                clsPHPTravels_LoginPage.fnClickLoginButton();                
 
                 objPHP.fnGoThroughListElments();
                 objPHP.fnDashboardElementsInRedBoxForReport();
@@ -50,6 +49,7 @@ namespace AutomationTrainingM7B.Test_Cases
             catch (Exception e)
             {
                 Assert.AreEqual(true, driver.Title.Contains("Dashboard"), "The Dashboard was not loaded correctly.");
+                sreenPath = objRM.fnCaptureImage(driver, "Screenshot.png");
                 objTest.Log(AventStack.ExtentReports.Status.Error, "Step has failed with SS", MediaEntityBuilder.CreateScreenCaptureFromPath(sreenPath).Build());
                 Console.WriteLine(e.Message);
                 Console.WriteLine("Test Case Failed");
@@ -108,13 +108,15 @@ namespace AutomationTrainingM7B.Test_Cases
                 objTest = exTestCase.CreateNode("ACCOUNT", "CUSTOMERS SUB-MENU TO SORT");
                 objPHP = new clsPHPTravels_LoginPage(driver);
                 objPHP.fnSortAccountSubMenu();
+                //objPHP.fnAssertSorting();
+               
                 //Screenshot
                 sreenPath = objRM.fnCaptureImage(driver, "SSMenuOption.png");
                 objTest.Log(AventStack.ExtentReports.Status.Pass, "Step ScreenShot :", MediaEntityBuilder.CreateScreenCaptureFromPath(sreenPath).Build());
             }
             catch (Exception ex)
             {
-                Assert.AreEqual(true, driver.Title.Contains("Customer Management"), "The Dashboard was not loaded correctly.");
+                Assert.AreEqual(true, driver.Title.Contains("Customer Management"), "Customer Management was not loaded correctly.");
                 objTest.Log(AventStack.ExtentReports.Status.Error, "Step has failed with SS", MediaEntityBuilder.CreateScreenCaptureFromPath(sreenPath).Build());
                 Console.WriteLine(ex.Message);
                 Console.WriteLine("Test Case Failed");
