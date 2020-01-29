@@ -19,16 +19,28 @@ namespace AutomationTrainingM7B.Base_Files
         //*                V A R I A B L E S
         //**************************************************
 
-        /*Webdriver Intance*/
+        /*Webdriver Instance*/
         public static clsDriver objclsDriver;
         public static IWebDriver driver;
+        //public string email = ConfigurationManager.AppSettings.Get("email");
+        //public string password = ConfigurationManager.AppSettings.Get("password");
+        public string url;
+        public string email;
+        public string password;
+
         /*URL for Webdriver*/
-        private static string strBrowserName = ConfigurationManager.AppSettings.Get("url");
+        //private static string strBrowserName = ConfigurationManager.AppSettings.Get("url");
+
         /*Extent Reports Framework*/
-        public static clsReportManager objRM = new clsReportManager();
+        //public static clsReportManager objRM = new clsReportManager();
+        public static clsReportManager objRM;
         public static ExtentV3HtmlReporter objHtmlReporter; //Add information in HTML
         public static ExtentReports objExtent; //Extent Reports Object
+
+        public static ExtentTest exTestSuite;
         public static ExtentTest objTest; // Test object for Extent Reports
+        public static ExtentTest exTestStep;
+
         //public static ExtentHtmlReporter objHtmlReporter; //Old Version of HTML
 
 
@@ -38,8 +50,14 @@ namespace AutomationTrainingM7B.Base_Files
         //**************************************************
         //OneTimeSetUp before each class test
         [OneTimeSetUp]
-        public static void fnBeforeClass()
+        public void fnBeforeAllTest()
         {
+            email = ConfigurationManager.AppSettings.Get("email");
+            password = ConfigurationManager.AppSettings.Get("password");
+            url = ConfigurationManager.AppSettings.Get("url");
+
+            objRM = new clsReportManager();
+
             /*Init ExtentHtmlReporter object*/
             if (objHtmlReporter == null)
             {
@@ -50,25 +68,20 @@ namespace AutomationTrainingM7B.Base_Files
             if (objExtent == null)
             {
                 objExtent = new ExtentReports();
-                objRM.fnReportSetUp(objHtmlReporter, objExtent);
+                
             }
-        }
-
-        //OneTimeTearDown after each class test
-        [OneTimeTearDown]
-        public static void fnAfterClass()
-        {
-            objExtent.Flush();
+            objRM.fnReportSetUp(objHtmlReporter, objExtent);
         }
 
         [SetUp]
         //SetUp Before each test case
-        public static void SetUp()
+        public void SetUp()
         {
             driver = new ChromeDriver();
-            driver.Url = strBrowserName;
+            driver.Url = url;
             driver.Manage().Window.Maximize();
             objclsDriver = new clsDriver(driver);
+            objTest = objExtent.CreateTest("test");
 
         }
 
@@ -80,6 +93,14 @@ namespace AutomationTrainingM7B.Base_Files
             driver.Close();
             driver.Quit();
         }
+
+        //OneTimeTearDown after each class test
+        [OneTimeTearDown]
+        public void fnAfterClass()
+        {
+            objExtent.Flush();
+        }
+
 
         /*Clear and Send text to specific field*/
         public static void FnSendkeyAndClear(By by, string pstrText)
