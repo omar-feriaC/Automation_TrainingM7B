@@ -19,15 +19,17 @@ namespace AutomationTrainingM7B.Test_Cases
     {
         clsPHPTravels_LoginPage objPHP;
         string sreenPath;
-        public static WebDriverWait _driverWait;  
+        public static WebDriverWait _driverWait;
+       
 
-        
 
         [Test, Order(1)]
         public void Test_M9Exercise()
         {
+           
             try
             {
+                
                 //**********************************************
                 //  DASHBOARD ELEMENTS IN RED BOX             //
                 //**********************************************
@@ -35,9 +37,10 @@ namespace AutomationTrainingM7B.Test_Cases
                 //Init objects
                 objPHP = new clsPHPTravels_LoginPage(driver);
                 //Login Action
-                Assert.AreEqual(true, driver.Title.Contains("Administator Login"), "The Login Page was not loaded correctly.");
-                clsPHPTravels_LoginPage.fnEnterEmail("admin@phptravels.com");
-                clsPHPTravels_LoginPage.fnEnterPassword("demoadmin");
+                Assert.AreEqual(true, driver.Title.Contains("Administator Login"), "The Login Page was not loaded correctly.");               
+                clsPHPTravels_LoginPage.fnEnterEmail(strUserEmail);
+                clsPHPTravels_LoginPage.fnEnterPassword(strUserPassword);
+
                 clsPHPTravels_LoginPage.fnClickLoginButton();                
 
                 objPHP.fnGoThroughListElments();

@@ -19,9 +19,7 @@ namespace AutomationTrainingM7B.Base_Files
     {
         //**************************************************
         //*                V A R I A B L E S
-        //**************************************************
-
-       
+        //**************************************************      
 
         public static ExtentTest exTestSuit;        
         public static ExtentTest exTestCase;
@@ -29,10 +27,10 @@ namespace AutomationTrainingM7B.Base_Files
         /*Webdriver Intance*/
         public static clsDriver objclsDriver;
         public static IWebDriver driver;
-        /*URL for Webdriver*/
+        /*URL for Webdriver*/        
         private static string strBrowserName = ConfigurationManager.AppSettings.Get("url");
-        private static string strUserEmail = ConfigurationManager.AppSettings.Get("email");
-        private static string strUserPassword = ConfigurationManager.AppSettings.Get("password");
+        protected static string strUserEmail = ConfigurationManager.AppSettings.Get("email");
+        protected static string strUserPassword = ConfigurationManager.AppSettings.Get("password");
         /*Extent Reports Framework*/
         public static clsReportManager objRM = new clsReportManager();
         public static ExtentV3HtmlReporter objHtmlReporter; //Add information in HTML
@@ -47,6 +45,7 @@ namespace AutomationTrainingM7B.Base_Files
         [OneTimeSetUp]
         public static void fnBeforeClass()
         {
+         
             /*Init ExtentHtmlReporter object*/
             if (objHtmlReporter == null)
             {
