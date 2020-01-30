@@ -22,17 +22,12 @@ namespace AutomationTrainingM7B.Base_Files
         /*Webdriver Instance*/
         public static clsDriver objclsDriver;
         public static IWebDriver driver;
-        //public string email = ConfigurationManager.AppSettings.Get("email");
-        //public string password = ConfigurationManager.AppSettings.Get("password");
         public string url;
         public string email;
         public string password;
 
-        /*URL for Webdriver*/
-        //private static string strBrowserName = ConfigurationManager.AppSettings.Get("url");
 
         /*Extent Reports Framework*/
-        //public static clsReportManager objRM = new clsReportManager();
         public static clsReportManager objRM;
         public static ExtentV3HtmlReporter objHtmlReporter; //Add information in HTML
         public static ExtentReports objExtent; //Extent Reports Object
@@ -62,7 +57,6 @@ namespace AutomationTrainingM7B.Base_Files
             if (objHtmlReporter == null)
             {
                 objHtmlReporter = new ExtentV3HtmlReporter(objRM.fnReportPath());
-                //objHtmlReporter = new ExtentHtmlReporter(objRM.fnReportPath());
             }
             /*Init ExtentReports object*/
             if (objExtent == null)
@@ -81,7 +75,7 @@ namespace AutomationTrainingM7B.Base_Files
             driver.Url = url;
             driver.Manage().Window.Maximize();
             objclsDriver = new clsDriver(driver);
-            objTest = objExtent.CreateTest("test");
+            objTest = objExtent.CreateTest(TestContext.CurrentContext.Test.Name);
 
         }
 

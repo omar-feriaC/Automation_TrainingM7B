@@ -18,10 +18,8 @@ namespace AutomationTrainingM7B.Page_Objects
 
         /*LOCATORS DESCRIPTION*/
         readonly static string STR_EMAIL_TXT = "(//label[@class='input-outlined']//descendant::input)[1]";
-        readonly static string STR_EMAIL_TXT2 = "email";
         readonly static string STR_PASSWORD_TXT = "password";
         readonly static string STRREMEMBERME_LNK = "///label[@class='checkbox']";
-        readonly static string STRREMEMBERME_LNK2 = "//label[@class='checkbox']";
         readonly static string STR_FORGOTPASS_LNK = "//*[text()='Forget Password']";
         readonly static string STR_LOGIN_BTN = "//span[text()='Login']";
         readonly static string STR_HAMBURGER_BTN = "sidebarCollapse";
@@ -31,6 +29,8 @@ namespace AutomationTrainingM7B.Page_Objects
         readonly static string STR_TOTALCUSTOMERS_HEADER = "(//div[@class='serverHeader__stats']//a)[3]";
         readonly static string STR_TOTALGUESTS_HEADER = "(//div[@class='serverHeader__stats']//a)[4]";
         readonly static string STR_TOTALBOOKING_HEADER = "(//div[@class='serverHeader__stats']//a)[5]";
+        readonly static string STR_MODULESOPTION_FROMSIDEBAR = "(//div[@class='social-sidebar']//a)[3]";
+        readonly static string STR_SETTINGSOPTION_FROMSUBMENU = "(//div[@class='social-sidebar']//descendant::a)[5]";
 
         /*CONSTRUCTOR*/
         public clsPHPTravels_LoginPage(IWebDriver pobjDriver)
@@ -51,6 +51,8 @@ namespace AutomationTrainingM7B.Page_Objects
         private static IWebElement objTotalCustomers => driver.FindElement(By.XPath(STR_TOTALCUSTOMERS_HEADER));
         private static IWebElement objTotalGuests => driver.FindElement(By.XPath(STR_TOTALGUESTS_HEADER));
         private static IWebElement objTotalBookings => driver.FindElement(By.XPath(STR_TOTALBOOKING_HEADER));
+        private static IWebElement objModulesOptionFromSideBar => driver.FindElement(By.XPath(STR_MODULESOPTION_FROMSIDEBAR));
+        private static IWebElement objSettingsOptionFromSubMenu => driver.FindElement(By.XPath(STR_SETTINGSOPTION_FROMSUBMENU));
 
         /*METHODS/FUNCTIONS*/
 
@@ -62,9 +64,6 @@ namespace AutomationTrainingM7B.Page_Objects
 
         public static void fnEnterEmail(string pstrEmail)
         {
-            //clsDriver.fnWaitForElementToExist(By.Name(STR_EMAIL_TXT));
-            //clsDriver.fnWaitForElementToBeVisible(By.Name(STR_EMAIL_TXT));
-            //clsDriver.fnWaitForElementToExist(By.XPath(STR_EMAIL_TXT));
             clsDriver.fnWaitForElementToBeVisible(By.XPath(STR_EMAIL_TXT));
             objEmailTxt.Clear();
             objEmailTxt.SendKeys(pstrEmail);
@@ -139,6 +138,42 @@ namespace AutomationTrainingM7B.Page_Objects
         {
             clsDriver.fnWaitForElementToBeVisible(By.XPath(STR_TOTALBOOKING_HEADER));
             return objTotalBookings;
+        }
+
+        private IWebElement GetModulesOptionFromSideBar()
+        {
+            return objModulesOptionFromSideBar;
+        }
+
+        public static void fnSelectOptionFromSideBar(string poptionSelected)
+        {
+            switch(poptionSelected)
+            {
+                case "MODULES" :
+                    _driverWait.Until(ExpectedConditions.ElementExists(By.XPath(STR_MODULESOPTION_FROMSIDEBAR)));
+                    _driverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath(STR_MODULESOPTION_FROMSIDEBAR)));
+                    _driverWait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(STR_MODULESOPTION_FROMSIDEBAR)));
+                    objModulesOptionFromSideBar.Click();
+                    break;
+            }
+        }
+
+        private IWebElement GetSettingsOptionFromSubMenu()
+        {
+            return objSettingsOptionFromSubMenu;
+        }
+
+        public static void fnSelectOptionFromSubMenu(string poptionSelected)
+        {
+            switch (poptionSelected)
+            {
+                case "SETTINGS":
+                    _driverWait.Until(ExpectedConditions.ElementExists(By.XPath(STR_SETTINGSOPTION_FROMSUBMENU)));
+                    _driverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath(STR_SETTINGSOPTION_FROMSUBMENU)));
+                    _driverWait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(STR_SETTINGSOPTION_FROMSUBMENU)));
+                    objSettingsOptionFromSubMenu.Click();
+                    break;
+            }
         }
 
     }

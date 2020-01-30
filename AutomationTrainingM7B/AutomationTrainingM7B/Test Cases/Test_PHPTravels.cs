@@ -27,11 +27,9 @@ namespace AutomationTrainingM7B.Test_Cases
                 exTestStep = objTest.CreateNode("Login", "Login to PHPTravels");
                 //Login Action
                 Assert.AreEqual(true, driver.Url.Contains("https://www.phptravels.net/admin"), "The Login Page was loaded correctly.");
-                //clsPHPTravels_LoginPage.fnEnterEmail("admin@phptravels.com");
                 clsPHPTravels_LoginPage.fnEnterEmail(email);
                 clsPHPTravels_LoginPage.fnEnterPassword(password);
                 clsPHPTravels_LoginPage.fnClickLoginButton();
-                //clsPHPTravels_LoginPage.fnWaitHamburgerMenu();
                 Assert.AreEqual(true, driver.Title.Contains("Administator Login"), "The Dashboard was not loaded correctly."); //Preguntar por este assert
                 Console.WriteLine(clsPHPTravels_LoginPage.fnGetTotalAdminsHeader().Text);
                 exTestStep.Log(Status.Info, clsPHPTravels_LoginPage.fnGetTotalAdminsHeader().Text);
@@ -58,6 +56,69 @@ namespace AutomationTrainingM7B.Test_Cases
                 Console.WriteLine("Test case successfully executed");
             }
         }
+        
+        [Test]
+        public void Test_M9Exercise2()
+        {
+            try
+            {
+                //Init objects
+                objPHP = new clsPHPTravels_LoginPage(driver);
+                exTestStep = objTest.CreateNode("Login", "Login to PHPTravels");
+                //Login Action
+                Assert.AreEqual(true, driver.Url.Contains("https://www.phptravels.net/admin"), "The Login Page was loaded correctly.");
+                clsPHPTravels_LoginPage.fnEnterEmail(email);
+                clsPHPTravels_LoginPage.fnEnterPassword(password);
+                clsPHPTravels_LoginPage.fnClickLoginButton();
+                Assert.AreEqual(true, driver.Title.Contains("Administator Login"), "The Dashboard was not loaded correctly."); //Preguntar por este assert
+                clsPHPTravels_LoginPage.fnSelectOptionFromSideBar("MODULES");
+                Assert.AreEqual(true, driver.Url.Contains("https://www.phptravels.net/admin/settings/modules/"), "Modules Page was loaded correctly.");
+                objRM.fnCaptureImage(driver, exTestStep);
+                exTestStep.Pass("User login successfully");
+            }
+            catch (Exception ex)
+            {
+                objRM.fnCaptureImage(driver, exTestStep);
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Test Case Failed.");
+                exTestStep.Fail($"Test Case failed with error: {ex.Message}");
+            }
+            finally
+            {
+                Console.WriteLine("Test case successfully executed");
+            }
+        }
 
+        [Test]
+        public void Test_M9Exercise3()
+        {
+            try
+            {
+                //Init objects
+                objPHP = new clsPHPTravels_LoginPage(driver);
+                exTestStep = objTest.CreateNode("Login", "Login to PHPTravels");
+                //Login Action
+                Assert.AreEqual(true, driver.Url.Contains("https://www.phptravels.net/admin"), "The Login Page was loaded correctly.");
+                clsPHPTravels_LoginPage.fnEnterEmail(email);
+                clsPHPTravels_LoginPage.fnEnterPassword(password);
+                clsPHPTravels_LoginPage.fnClickLoginButton();
+                Assert.AreEqual(true, driver.Title.Contains("Administator Login"), "The Dashboard was not loaded correctly."); //Preguntar por este assert
+                clsPHPTravels_LoginPage.fnSelectOptionFromSideBar("SETTINGS");
+                Assert.AreEqual(true, driver.Url.Contains("https://www.phptravels.net/admin/settings/modules/"), "Modules Page was loaded correctly.");
+                objRM.fnCaptureImage(driver, exTestStep);
+                exTestStep.Pass("User login successfully");
+            }
+            catch (Exception ex)
+            {
+                objRM.fnCaptureImage(driver, exTestStep);
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Test Case Failed.");
+                exTestStep.Fail($"Test Case failed with error: {ex.Message}");
+            }
+            finally
+            {
+                Console.WriteLine("Test case successfully executed");
+            }
+        }
     }
 }
